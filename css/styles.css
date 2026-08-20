@@ -1454,7 +1454,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 @media (max-width: 768px) {
-  .nav-links { display: none; position: fixed; inset: 0; top: 70px; background: var(--dark); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; z-index: 999; }
+  #navbar {
+    background: rgba(10,10,10,0.94);
+    backdrop-filter: blur(20px);
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(212,175,55,0.12);
+  }
+  .nav-links { display: none; position: fixed; inset: 0; top: 62px; background: var(--dark); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; z-index: 999; }
   .nav-links.open { display: flex; }
   .nav-links a { font-size: 1.1rem; }
   .hamburger { display: flex; }
