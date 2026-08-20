@@ -1899,3 +1899,102 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .bm-step-header h2 { font-size: 1.25rem; }
   .bm-guests-num { font-size: 2.25rem; }
 }
+
+/* =============================
+   FLOATING COCKTAIL GLASSES
+   ============================= */
+
+.ct-wrap {
+  position: fixed;
+  top: 50%;
+  z-index: 45;
+  pointer-events: none;
+  will-change: transform, filter, opacity;
+}
+#ctLeft {
+  left: -38px;
+  width: 148px;
+  transform: translateY(-50%) rotate(-6deg);
+}
+#ctRight {
+  right: -38px;
+  width: 130px;
+  transform: translateY(-50%) rotate(6deg);
+}
+
+/* Float oscillation */
+#ctLeft  { animation: floatL 5s ease-in-out infinite; }
+#ctRight { animation: floatR 5.8s ease-in-out infinite; }
+@keyframes floatL {
+  0%,100% { margin-top:  0px; }
+  50%      { margin-top: -14px; }
+}
+@keyframes floatR {
+  0%,100% { margin-top: -8px; }
+  50%      { margin-top: 8px; }
+}
+
+/* Liquid wave sloshing */
+#waveL, #waveR {
+  animation: waveSway 3.5s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+#waveR { animation-duration: 4.2s; animation-direction: alternate-reverse; }
+@keyframes waveSway {
+  from { d: path("M 62,105 Q 81,108 100,105 Q 119,102 138,105"); }
+  to   { d: path("M 62,105 Q 81,102 100,105 Q 119,108 138,105"); }
+}
+
+/* Liquid sloshing tilt */
+#liqLeftPoly {
+  transform-origin: 100px 172px;
+  animation: tiltL 3.5s ease-in-out infinite alternate;
+}
+#liqRightPath {
+  transform-origin: 100px 200px;
+  animation: tiltR 4.2s ease-in-out infinite alternate;
+}
+@keyframes tiltL {
+  from { transform: rotate(-1.5deg); }
+  to   { transform: rotate(1.5deg);  }
+}
+@keyframes tiltR {
+  from { transform: rotate(1.5deg);  }
+  to   { transform: rotate(-1.5deg); }
+}
+
+/* Bubbles — martini */
+.bub-m {
+  animation: bubM 2.8s ease-in infinite;
+  transform-origin: center;
+}
+@keyframes bubM {
+  0%   { opacity: 0.6; transform: translateY(0) scale(1); }
+  70%  { opacity: 0.35; }
+  100% { opacity: 0; transform: translateY(-68px) scale(0.4); }
+}
+
+/* Bubbles — rocks */
+.bub-r {
+  animation: bubR 3.2s ease-in infinite;
+}
+@keyframes bubR {
+  0%   { opacity: 0.55; transform: translateY(0) scale(1); }
+  70%  { opacity: 0.3; }
+  100% { opacity: 0; transform: translateY(-110px) scale(0.3); }
+}
+
+/* Sparkles on rim */
+.sparkle {
+  animation: sparkPop 4s ease-in-out infinite;
+}
+@keyframes sparkPop {
+  0%,85%,100% { opacity: 0;   transform: scale(0.3); }
+  88%          { opacity: 1;   transform: scale(1.8); }
+  92%          { opacity: 0.6; transform: scale(1); }
+}
+
+/* Hide on narrow screens */
+@media (max-width: 900px) {
+  .ct-wrap { display: none; }
+}

@@ -906,6 +906,174 @@
     <span class="chatbot-notify">1</span>
   </button>
 
+  <!-- ===== FLOATING COCKTAILS ===== -->
+
+  <!-- Left: Martini glass -->
+  <div class="ct-wrap" id="ctLeft">
+    <svg viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+      <defs>
+        <linearGradient id="liqL" x1="0" y1="0" x2="0" y2="1">
+          <stop id="liqLa" offset="0%" stop-color="#d4af37" stop-opacity="0.55"/>
+          <stop id="liqLb" offset="100%" stop-color="#a07800" stop-opacity="0.9"/>
+        </linearGradient>
+        <filter id="glowL" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="6" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <clipPath id="bowlClip">
+          <polygon points="28,32 172,32 106,172 94,172"/>
+        </clipPath>
+      </defs>
+
+      <!-- Glow aura behind glass -->
+      <ellipse id="auraL" cx="100" cy="105" rx="68" ry="72"
+               fill="#d4af37" fill-opacity="0.07" filter="url(#glowL)"/>
+
+      <!-- Bowl outline -->
+      <polygon points="28,32 172,32 106,172 94,172"
+               fill="rgba(255,255,255,0.03)"
+               stroke="rgba(255,255,255,0.38)" stroke-width="2.5" stroke-linejoin="round"/>
+
+      <!-- Liquid fill -->
+      <polygon id="liqLeftPoly" points="62,105 138,105 106,172 94,172"
+               fill="url(#liqL)" clip-path="url(#bowlClip)"/>
+
+      <!-- Liquid surface wave (animated) -->
+      <path id="waveL" d="M 62,105 Q 81,101 100,105 Q 119,109 138,105"
+            fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.8"/>
+
+      <!-- Glass shine left -->
+      <polygon points="32,36 54,36 40,162 28,162"
+               fill="rgba(255,255,255,0.06)" clip-path="url(#bowlClip)"/>
+      <!-- Glass shine right thin -->
+      <line x1="158" y1="38" x2="110" y2="168"
+            stroke="rgba(255,255,255,0.08)" stroke-width="10" clip-path="url(#bowlClip)"/>
+
+      <!-- Bubbles inside liquid -->
+      <circle class="bub-m" cx="88" cy="163" r="3" fill="rgba(255,255,255,0.55)"/>
+      <circle class="bub-m" cx="103" cy="156" r="2.2" fill="rgba(255,255,255,0.45)" style="animation-delay:.6s"/>
+      <circle class="bub-m" cx="95" cy="148" r="1.8" fill="rgba(255,255,255,0.4)" style="animation-delay:1.1s"/>
+      <circle class="bub-m" cx="114" cy="158" r="2.5" fill="rgba(255,255,255,0.4)" style="animation-delay:0.3s"/>
+      <circle class="bub-m" cx="80"  cy="152" r="1.5" fill="rgba(255,255,255,0.35)" style="animation-delay:1.5s"/>
+      <circle class="bub-m" cx="108" cy="142" r="1.5" fill="rgba(255,255,255,0.3)" style="animation-delay:0.9s"/>
+
+      <!-- Olive pick -->
+      <line x1="72" y1="90" x2="136" y2="122"
+            stroke="rgba(255,255,255,0.55)" stroke-width="1.8"/>
+      <!-- Olive -->
+      <circle cx="72" cy="90" r="10" fill="#3d6b24" stroke="rgba(255,255,255,0.35)" stroke-width="1.2"/>
+      <circle cx="72" cy="90" r="4"  fill="#c03030"/>
+      <!-- Tiny olive shine -->
+      <circle cx="68" cy="87" r="2.5" fill="rgba(255,255,255,0.25)"/>
+
+      <!-- Stem -->
+      <line x1="100" y1="174" x2="100" y2="268"
+            stroke="rgba(255,255,255,0.38)" stroke-width="3.5" stroke-linecap="round"/>
+
+      <!-- Base -->
+      <ellipse cx="100" cy="272" rx="58" ry="11"
+               fill="rgba(255,255,255,0.05)"
+               stroke="rgba(255,255,255,0.35)" stroke-width="2.5"/>
+      <!-- Base shine -->
+      <ellipse cx="88" cy="270" rx="22" ry="4"
+               fill="rgba(255,255,255,0.08)"/>
+
+      <!-- Rim sparkles -->
+      <circle class="sparkle" cx="28"  cy="32" r="2.5" fill="white" opacity="0"/>
+      <circle class="sparkle" cx="172" cy="32" r="2.5" fill="white" opacity="0" style="animation-delay:.7s"/>
+      <circle class="sparkle" cx="100" cy="32" r="2"   fill="white" opacity="0" style="animation-delay:1.4s"/>
+    </svg>
+  </div>
+
+  <!-- Right: Rocks / Highball glass -->
+  <div class="ct-wrap" id="ctRight">
+    <svg viewBox="0 0 200 320" xmlns="http://www.w3.org/2000/svg" overflow="visible">
+      <defs>
+        <linearGradient id="liqR" x1="0" y1="0" x2="0" y2="1">
+          <stop id="liqRa" offset="0%" stop-color="#d4af37" stop-opacity="0.5"/>
+          <stop id="liqRb" offset="100%" stop-color="#a07800" stop-opacity="0.88"/>
+        </linearGradient>
+        <filter id="glowR" x="-40%" y="-40%" width="180%" height="180%">
+          <feGaussianBlur stdDeviation="6" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <linearGradient id="iceGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stop-color="white" stop-opacity="0.28"/>
+          <stop offset="100%" stop-color="white" stop-opacity="0.04"/>
+        </linearGradient>
+        <clipPath id="glassClipR">
+          <path d="M 46,38 L 154,38 L 147,272 L 53,272 Z"/>
+        </clipPath>
+      </defs>
+
+      <!-- Glow aura -->
+      <ellipse id="auraR" cx="100" cy="160" rx="62" ry="75"
+               fill="#d4af37" fill-opacity="0.07" filter="url(#glowR)"/>
+
+      <!-- Glass body -->
+      <path d="M 46,38 L 154,38 L 147,272 L 53,272 Z"
+            fill="rgba(255,255,255,0.03)"
+            stroke="rgba(255,255,255,0.38)" stroke-width="2.5" stroke-linejoin="round"/>
+
+      <!-- Liquid fill -->
+      <path id="liqRightPath" d="M 49,142 L 151,142 L 147,272 L 53,272 Z"
+            fill="url(#liqR)" clip-path="url(#glassClipR)"/>
+
+      <!-- Surface wave -->
+      <path id="waveR" d="M 49,142 Q 74,138 100,142 Q 126,146 151,142"
+            fill="none" stroke="rgba(255,255,255,0.55)" stroke-width="1.8"/>
+
+      <!-- Ice cube 1 (rotated left) -->
+      <rect x="56" y="152" width="46" height="46" rx="5"
+            fill="url(#iceGrad)" stroke="rgba(255,255,255,0.3)" stroke-width="1.8"
+            transform="rotate(-10,79,175)" clip-path="url(#glassClipR)"/>
+      <line x1="62" y1="158" x2="62" y2="188"
+            stroke="rgba(255,255,255,0.35)" stroke-width="1.2"
+            transform="rotate(-10,79,175)" clip-path="url(#glassClipR)"/>
+
+      <!-- Ice cube 2 (rotated right) -->
+      <rect x="100" y="158" width="42" height="42" rx="5"
+            fill="url(#iceGrad)" stroke="rgba(255,255,255,0.25)" stroke-width="1.8"
+            transform="rotate(8,121,179)" clip-path="url(#glassClipR)"/>
+      <line x1="106" y1="163" x2="106" y2="191"
+            stroke="rgba(255,255,255,0.3)" stroke-width="1.2"
+            transform="rotate(8,121,179)" clip-path="url(#glassClipR)"/>
+
+      <!-- Glass shine left -->
+      <path d="M 50,42 L 62,268" stroke="rgba(255,255,255,0.1)"
+            stroke-width="10" stroke-linecap="round" clip-path="url(#glassClipR)"/>
+
+      <!-- Bubbles -->
+      <circle class="bub-r" cx="72"  cy="264" r="3.5" fill="rgba(255,255,255,0.5)"/>
+      <circle class="bub-r" cx="100" cy="258" r="2.8" fill="rgba(255,255,255,0.45)" style="animation-delay:.5s"/>
+      <circle class="bub-r" cx="124" cy="262" r="2.5" fill="rgba(255,255,255,0.4)" style="animation-delay:1s"/>
+      <circle class="bub-r" cx="86"  cy="250" r="2.2" fill="rgba(255,255,255,0.35)" style="animation-delay:0.3s"/>
+      <circle class="bub-r" cx="112" cy="247" r="2"   fill="rgba(255,255,255,0.35)" style="animation-delay:1.3s"/>
+      <circle class="bub-r" cx="95"  cy="238" r="1.8" fill="rgba(255,255,255,0.28)" style="animation-delay:0.7s"/>
+
+      <!-- Straw -->
+      <rect x="136" y="40" width="7" height="180" rx="3.5"
+            fill="#ff8533" opacity="0.88"/>
+      <rect x="136" y="40" width="3.5" height="180" rx="2"
+            fill="rgba(255,255,255,0.28)"/>
+
+      <!-- Orange slice on rim -->
+      <g transform="translate(152,42) rotate(-25)">
+        <path d="M 0,0 A 20,20 0 0,1 20,0 Z" fill="#ff8c00" opacity="0.88"/>
+        <path d="M 0,0 A 20,20 0 0,1 20,0 Z" fill="none"
+              stroke="rgba(255,255,255,0.35)" stroke-width="1"/>
+        <line x1="10" y1="0" x2="2"  y2="-17" stroke="rgba(255,200,0,0.4)" stroke-width="0.9"/>
+        <line x1="10" y1="0" x2="10" y2="-20" stroke="rgba(255,200,0,0.4)" stroke-width="0.9"/>
+        <line x1="10" y1="0" x2="18" y2="-17" stroke="rgba(255,200,0,0.4)" stroke-width="0.9"/>
+      </g>
+
+      <!-- Rim sparkles -->
+      <circle class="sparkle" cx="46"  cy="38" r="2.5" fill="white" opacity="0"/>
+      <circle class="sparkle" cx="154" cy="38" r="2.5" fill="white" opacity="0" style="animation-delay:.9s"/>
+      <circle class="sparkle" cx="100" cy="38" r="2"   fill="white" opacity="0" style="animation-delay:1.6s"/>
+    </svg>
+  </div>
+
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

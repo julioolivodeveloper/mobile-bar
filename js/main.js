@@ -629,3 +629,94 @@ window.addEventListener('scroll', () => {
   });
 
 })();
+
+// ===== FLOATING COCKTAIL GLASSES =====
+(function() {
+  const ctL = document.getElementById('ctLeft');
+  const ctR = document.getElementById('ctRight');
+  if (!ctL || !ctR) return;
+
+  const liqLa = document.getElementById('liqLa');
+  const liqLb = document.getElementById('liqLb');
+  const liqRa = document.getElementById('liqRa');
+  const liqRb = document.getElementById('liqRb');
+  const auraL = document.getElementById('auraL');
+  const auraR = document.getElementById('auraR');
+
+  // Color stops per page section (R, G, B)
+  const palette = [
+    [212, 175,  55],  // 0%  — Gold      (Hero)
+    [210,  60,  60],  // 20% — Crimson   (Services)
+    [ 40, 130, 230],  // 40% — Electric  (Why Us)
+    [ 30, 175,  90],  // 60% — Emerald   (Gallery)
+    [220,  80, 180],  // 80% — Fuchsia   (Reviews)
+    [212, 175,  55],  // 100%— Gold      (Footer)
+  ];
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+
+  function getColor(pct) {
+    const scaled = pct * (palette.length - 1);
+    const i = Math.min(Math.floor(scaled), palette.length - 2);
+    const t = scaled - i;
+    return [
+      Math.round(lerp(palette[i][0], palette[i+1][0], t)),
+      Math.round(lerp(palette[i][1], palette[i+1][1], t)),
+      Math.round(lerp(palette[i][2], palette[i+1][2], t)),
+    ];
+  }
+
+  let lastScrollY = 0;
+  let tiltAngle = 0;
+  let raf = null;
+
+  function tick() {
+    const scrollY   = window.scrollY;
+    const maxScroll = document.body.scrollHeight - window.innerHeight;
+    const pct       = maxScroll > 0 ? scrollY / maxScroll : 0;
+
+    // Scroll speed → tilt (glasses tilt when scrolling fast)
+    const speed = scrollY - lastScrollY;
+    tiltAngle   = Math.max(-10, Math.min(10, tiltAngle * 0.85 + speed * 0.25));
+    lastScrollY = scrollY;
+
+    // Parallax — left slower, right faster
+    const yL = scrollY * -0.18;
+    const yR = scrollY * -0.30;
+
+    // Base rotation + scroll tilt
+    const rotL = -6 + tiltAngle * 0.5;
+    const rotR =  6 + tiltAngle * 0.5;
+
+    ctL.style.transform = `translateY(calc(-50% + ${yL}px)) rotate(${rotL}deg)`;
+    ctR.style.transform = `translateY(calc(-50% + ${yR}px)) rotate(${rotR}deg)`;
+
+    // Color transition
+    const [r, g, b] = getColor(pct);
+    const colTop  = `rgba(${r},${g},${b},0.58)`;
+    const colBot  = `rgba(${Math.round(r*0.7)},${Math.round(g*0.7)},${Math.round(b*0.7)},0.92)`;
+    const glowCol = `rgba(${r},${g},${b},0.75)`;
+
+    if (liqLa) { liqLa.setAttribute('stop-color', `rgb(${r},${g},${b})`); liqLa.setAttribute('stop-opacity', '0.55'); }
+    if (liqLb) { liqLb.setAttribute('stop-color', `rgb(${Math.round(r*0.65)},${Math.round(g*0.65)},${Math.round(b*0.65)})`); liqLb.setAttribute('stop-opacity', '0.92'); }
+    if (liqRa) { liqRa.setAttribute('stop-color', `rgb(${r},${g},${b})`); liqRa.setAttribute('stop-opacity', '0.50'); }
+    if (liqRb) { liqRb.setAttribute('stop-color', `rgb(${Math.round(r*0.65)},${Math.round(g*0.65)},${Math.round(b*0.65)})`); liqRb.setAttribute('stop-opacity', '0.90'); }
+
+    // Glow auras
+    if (auraL) { auraL.setAttribute('fill', `rgb(${r},${g},${b})`); }
+    if (auraR) { auraR.setAttribute('fill', `rgb(${r},${g},${b})`); }
+
+    // Drop-shadow glow on wrapper
+    const glow = `drop-shadow(0 0 18px rgba(${r},${g},${b},0.65)) drop-shadow(0 0 6px rgba(${r},${g},${b},0.4))`;
+    ctL.style.filter = glow;
+    ctR.style.filter = glow;
+
+    raf = null;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!raf) raf = requestAnimationFrame(tick);
+  }, { passive: true });
+
+  tick(); // initial render
+})();
