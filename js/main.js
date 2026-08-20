@@ -142,7 +142,6 @@ function buildDots() {
 }
 function goToPage(p) {
   currentPage = Math.max(0, Math.min(p, totalPages - 1));
-  const offset = currentPage * (100 / perPage) * perPage;
   cards.forEach((c, i) => {
     c.style.display = Math.floor(i / perPage) === currentPage ? '' : 'none';
   });
@@ -165,14 +164,13 @@ const bookedDates = [
 
 flatpickr("#datepicker", {
   inline: true,
-  locale: "es",
   minDate: "today",
   dateFormat: "Y-m-d",
   onDayCreate(dObj, dStr, fp, dayElem) {
     const dateStr = dayElem.dateObj.toISOString().split('T')[0];
     if (bookedDates.includes(dateStr)) {
       dayElem.classList.add('booked');
-      dayElem.title = 'Fecha ocupada';
+      dayElem.title = 'Date booked';
     } else if (dayElem.dateObj >= new Date()) {
       dayElem.classList.add('available');
     }
@@ -184,22 +182,21 @@ flatpickr("#datepicker", {
       box.className = 'date-info-box busy';
       box.innerHTML = `
         <div class="dib-icon"><i class="fas fa-calendar-times"></i></div>
-        <h3>Fecha ocupada</h3>
-        <p>Lo sentimos, el <strong>${dateStr}</strong> ya tenemos un evento agendado. ¡Selecciona otra fecha!</p>
+        <h3>Date unavailable</h3>
+        <p>Sorry, <strong>${dateStr}</strong> is already booked. Please select another date!</p>
       `;
     } else {
       box.className = 'date-info-box available';
       box.innerHTML = `
         <div class="dib-icon"><i class="fas fa-calendar-check"></i></div>
-        <h3>¡Fecha disponible! 🎉</h3>
-        <p>El <strong>${dateStr}</strong> está libre. ¡Contáctanos para reservar tu lugar antes de que alguien más lo haga!</p>
+        <h3>Date available! 🎉</h3>
+        <p><strong>${dateStr}</strong> is open. Contact us now to secure your spot before someone else does!</p>
       `;
     }
   }
 });
 
 flatpickr("#fecha", {
-  locale: "es",
   minDate: "today",
   dateFormat: "Y-m-d",
   disableMobile: false
@@ -214,15 +211,15 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   const telefono = document.getElementById('telefono').value.trim();
   if (!nombre || !telefono) {
     msg.className = 'form-msg error';
-    msg.textContent = 'Por favor completa los campos obligatorios (*)';
+    msg.textContent = 'Please fill in all required fields (*)';
     return;
   }
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
   btn.disabled = true;
   setTimeout(() => {
     msg.className = 'form-msg success';
-    msg.innerHTML = '✅ ¡Solicitud enviada! Te contactaremos en menos de 24 horas.';
-    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Enviar Solicitud';
+    msg.innerHTML = '✅ Request sent! We\'ll get back to you within 24 hours.';
+    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Request';
     btn.disabled = false;
     this.reset();
   }, 1800);
@@ -240,36 +237,36 @@ const notify = document.querySelector('.chatbot-notify');
 let chatOpen = false;
 
 const responses = {
-  precios: {
-    text: '💰 <strong>Nuestros paquetes:</strong><br><br>• <strong>Básico</strong> — desde $299/evento (2 bartenders, 4 cócteles, 80 personas)<br>• <strong>Premium</strong> — desde $549/evento (3 bartenders, 8 cócteles, 150 personas) ⭐<br>• <strong>Élite</strong> — desde $899/evento (5 bartenders, menú ilimitado)<br><br>Escríbenos para una cotización personalizada.',
-    followUp: ['servicios', 'contacto', 'disponibilidad']
+  pricing: {
+    text: '💰 <strong>Our packages:</strong><br><br>• <strong>Basic</strong> — from $299/event (2 bartenders, 4 cocktails, 80 guests)<br>• <strong>Premium</strong> — from $549/event (3 bartenders, 8 cocktails, 150 guests) ⭐<br>• <strong>Elite</strong> — from $899/event (5 bartenders, unlimited menu)<br><br>Contact us for a custom quote!',
+    followUp: ['services', 'contact', 'availability']
   },
-  servicios: {
-    text: '🍸 <strong>Nuestros servicios incluyen:</strong><br><br>• Bodas & Compromisos<br>• Eventos Corporativos<br>• Festivales & Fiestas<br>• Eventos Privados (quince años, cumpleaños, etc.)<br><br>Todo incluido: bar, hielo, vasos, utensilios y limpieza.',
-    followUp: ['precios', 'bartenders', 'contacto']
+  services: {
+    text: '🍸 <strong>Our services include:</strong><br><br>• Weddings & Engagements<br>• Corporate Events<br>• Festivals & Parties<br>• Private Events (birthdays, quinceañeras, etc.)<br><br>Everything included: bar, ice, glasses, tools and cleanup.',
+    followUp: ['pricing', 'bartenders', 'contact']
   },
-  disponibilidad: {
-    text: '📅 Para consultar disponibilidad, puedes usar el <a href="#disponibilidad" style="color:var(--gold)">calendario en nuestra web</a> o escribirnos directamente.<br><br>También disponible para reservar por <strong>WhatsApp</strong> al <a href="https://wa.me/15555550100" target="_blank" style="color:#25d366">+1 (555) 555-0100</a>.',
-    followUp: ['precios', 'contacto']
+  availability: {
+    text: '📅 You can check availability using the <a href="#availability" style="color:var(--gold)">calendar on our website</a> or reach out directly.<br><br>Also available to book via <strong>WhatsApp</strong> at <a href="https://wa.me/15555550100" target="_blank" style="color:#25d366">+1 (555) 555-0100</a>.',
+    followUp: ['pricing', 'contact']
   },
-  cobertura: {
-    text: '📍 Cubrimos <strong>Ciudad de México y área metropolitana</strong>. Para eventos fuera de la CDMX, contáctanos para revisar la disponibilidad y calcular el costo de traslado.',
-    followUp: ['servicios', 'contacto']
+  coverage: {
+    text: '📍 We cover <strong>Los Angeles and surrounding areas</strong>. For events outside our usual range, contact us to check availability and travel costs.',
+    followUp: ['services', 'contact']
   },
-  contacto: {
-    text: '📞 <strong>Contáctanos:</strong><br><br>• 📱 WhatsApp: <a href="https://wa.me/15555550100" target="_blank" style="color:#25d366">+1 (555) 555-0100</a><br>• 📧 Email: <a href="mailto:hola@nomadbar.mx" style="color:var(--gold)">hola@nomadbar.mx</a><br>• 📞 Tel: +1 (555) 555-0100<br><br>¡Respondemos en menos de 2 horas! 🚀',
-    followUp: ['precios', 'disponibilidad']
+  contact: {
+    text: '📞 <strong>Reach us at:</strong><br><br>• 📱 WhatsApp: <a href="https://wa.me/15555550100" target="_blank" style="color:#25d366">+1 (555) 555-0100</a><br>• 📧 Email: <a href="mailto:hello@nomadbar.com" style="color:var(--gold)">hello@nomadbar.com</a><br>• 📞 Phone: +1 (555) 555-0100<br><br>We respond in under 2 hours! 🚀',
+    followUp: ['pricing', 'availability']
   },
   bartenders: {
-    text: '👨‍🍳 Nuestros bartenders son <strong>certificados internacionalmente</strong> con años de experiencia en eventos de lujo.<br><br>Usamos <strong>licores top-shelf</strong>, frutas frescas y siropes artesanales para garantizar la mejor experiencia.',
-    followUp: ['servicios', 'precios']
+    text: '👨‍🍳 Our bartenders are <strong>internationally certified</strong> with years of experience at luxury events.<br><br>We use <strong>top-shelf spirits</strong>, fresh fruits and artisan syrups to guarantee the best experience.',
+    followUp: ['services', 'pricing']
   }
 };
 
 const defaultResponses = [
-  '¿Puedo ayudarte con algo más? Puedo contarte sobre nuestros precios, servicios, disponibilidad o cómo contactarnos. 🍹',
-  'No encontré una respuesta específica para eso, pero nuestro equipo puede ayudarte. ¿Prefieres contactarnos por WhatsApp? 📱',
-  'Para preguntas detalladas, te recomiendo contactarnos directamente. Respondemos muy rápido. 😊'
+  'Can I help you with something else? I can tell you about our pricing, services, availability or how to contact us. 🍹',
+  'I didn\'t find a specific answer for that, but our team can help you directly. Prefer to chat on WhatsApp? 📱',
+  'For detailed questions, we recommend reaching out directly — we reply very fast. 😊'
 ];
 
 function toggleChat() {
@@ -316,7 +313,7 @@ function botReply(key) {
       if (data.followUp) {
         const qBtns = document.createElement('div');
         qBtns.className = 'chatbot-quick-btns';
-        const labels = { precios:'💰 Precios', servicios:'🍸 Servicios', disponibilidad:'📅 Disponibilidad', cobertura:'📍 Cobertura', contacto:'📞 Contacto', bartenders:'👨‍🍳 Bartenders' };
+        const labels = { pricing:'💰 Pricing', services:'🍸 Services', availability:'📅 Availability', coverage:'📍 Coverage', contact:'📞 Contact', bartenders:'👨‍🍳 Bartenders' };
         data.followUp.forEach(k => {
           const b = document.createElement('button');
           b.className = 'quick-btn';
@@ -335,7 +332,7 @@ function botReply(key) {
 }
 
 function handleQuickBtn(key) {
-  const labels = { precios:'💰 Precios', servicios:'🍸 Servicios', disponibilidad:'📅 Disponibilidad', cobertura:'📍 Cobertura', contacto:'📞 Contacto', bartenders:'👨‍🍳 Bartenders' };
+  const labels = { pricing:'💰 Pricing', services:'🍸 Services', availability:'📅 Availability', coverage:'📍 Coverage', contact:'📞 Contact', bartenders:'👨‍🍳 Bartenders' };
   addMessage(labels[key], true);
   botReply(key);
 }
@@ -351,12 +348,12 @@ function handleUserMessage() {
   chatInput.value = '';
   const lower = text.toLowerCase();
   let matched = null;
-  if (lower.match(/precio|costo|paquete|cuanto|cobran|\$/)) matched = 'precios';
-  else if (lower.match(/servicio|tipo|evento|boda|corporate|festival|fiesta|quince|cumplea/)) matched = 'servicios';
-  else if (lower.match(/disponib|fecha|calendar|reserva|libre|libre/)) matched = 'disponibilidad';
-  else if (lower.match(/zona|ubicaci|cobertura|donde|cdmx|ciudad/)) matched = 'cobertura';
-  else if (lower.match(/contact|telefon|email|whatsapp|llamar|escribir/)) matched = 'contacto';
-  else if (lower.match(/bartender|barman|mesero|personal|profesional/)) matched = 'bartenders';
+  if (lower.match(/price|cost|package|how much|charge|\$/)) matched = 'pricing';
+  else if (lower.match(/service|type|event|wedding|corporate|festival|party|birthday|quincea/)) matched = 'services';
+  else if (lower.match(/availab|date|calendar|book|reserve|free|open/)) matched = 'availability';
+  else if (lower.match(/area|location|cover|where|city|los angeles|la\b/)) matched = 'coverage';
+  else if (lower.match(/contact|phone|email|whatsapp|call|message|reach/)) matched = 'contact';
+  else if (lower.match(/bartender|barman|staff|team|professional|certif/)) matched = 'bartenders';
   botReply(matched);
 }
 
