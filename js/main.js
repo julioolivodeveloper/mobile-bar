@@ -418,6 +418,11 @@ window.addEventListener('scroll', () => {
   backdrop.addEventListener('click', closeModal);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
+  // Auto-open once after 10 seconds
+  setTimeout(() => {
+    if (!modal.classList.contains('open')) openModal();
+  }, 10000);
+
   // Navigate to step
   function goTo(step, back) {
     const steps = document.querySelectorAll('.bm-step');
