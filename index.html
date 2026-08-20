@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NOMAD BAR — Bar Móvil de Lujo</title>
+  <meta name="description" content="Bar móvil premium para bodas, corporativos, festivales y eventos privados. Cócteles artesanales donde tú los necesites." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&family=Montserrat:wght@400;600;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Calendar -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/themes/dark.css" />
+
+  <!-- AOS Animations -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ===== LOADER ===== -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="loader-logo">NB</div>
+      <div class="loader-bar"><div class="loader-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- ===== NAV ===== -->
+  <nav id="navbar">
+    <div class="nav-container">
+      <a href="#inicio" class="nav-logo">NOMAD<span>BAR</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#galeria">Galería</a></li>
+        <li><a href="#eventos">Eventos</a></li>
+        <li><a href="#resenas">Reseñas</a></li>
+        <li><a href="#disponibilidad">Disponibilidad</a></li>
+        <li><a href="#contacto" class="nav-cta">Cotizar</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="inicio" class="hero">
+    <div class="hero-bg">
+      <img src="https://images.unsplash.com/photo-1470337458703-46ad1756a187?w=1920&q=90&fit=crop" alt="Bar móvil" class="hero-img" />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="hero-particles" id="particles"></div>
+    <div class="hero-content">
+      <div class="hero-badge" data-aos="fade-down" data-aos-delay="200">
+        <i class="fas fa-cocktail"></i> Bar Móvil Premium
+      </div>
+      <h1 class="hero-title" data-aos="fade-up" data-aos-delay="400">
+        Llevamos la<br /><span class="gold-text">experiencia</span><br />hasta ti
+      </h1>
+      <p class="hero-sub" data-aos="fade-up" data-aos-delay="600">
+        Cócteles artesanales · Bartenders profesionales · Eventos únicos
+      </p>
+      <div class="hero-buttons" data-aos="fade-up" data-aos-delay="800">
+        <a href="#disponibilidad" class="btn btn-gold">
+          <i class="far fa-calendar-alt"></i> Ver Disponibilidad
+        </a>
+        <a href="https://wa.me/15555550100?text=Hola!%20Me%20interesa%20cotizar%20el%20bar%20m%C3%B3vil%20para%20mi%20evento%20%F0%9F%8D%B9" target="_blank" class="btn btn-outline">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+      </div>
+      <div class="hero-stats" data-aos="fade-up" data-aos-delay="1000">
+        <div class="stat">
+          <span class="stat-num" data-target="350">0</span><span class="stat-plus">+</span>
+          <span class="stat-label">Eventos</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="12">0</span><span class="stat-plus">k+</span>
+          <span class="stat-label">Cócteles</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-num" data-target="98">0</span><span class="stat-plus">%</span>
+          <span class="stat-label">Satisfacción</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ===== MARQUEE STRIP ===== -->
+  <div class="marquee-strip">
+    <div class="marquee-track">
+      <span><i class="fas fa-cocktail"></i> Bodas</span>
+      <span><i class="fas fa-briefcase"></i> Corporativos</span>
+      <span><i class="fas fa-music"></i> Festivales</span>
+      <span><i class="fas fa-birthday-cake"></i> Cumpleaños</span>
+      <span><i class="fas fa-glass-cheers"></i> Graduaciones</span>
+      <span><i class="fas fa-ring"></i> Compromisos</span>
+      <span><i class="fas fa-cocktail"></i> Bodas</span>
+      <span><i class="fas fa-briefcase"></i> Corporativos</span>
+      <span><i class="fas fa-music"></i> Festivales</span>
+      <span><i class="fas fa-birthday-cake"></i> Cumpleaños</span>
+      <span><i class="fas fa-glass-cheers"></i> Graduaciones</span>
+      <span><i class="fas fa-ring"></i> Compromisos</span>
+    </div>
+  </div>
+
+  <!-- ===== SERVICIOS ===== -->
+  <section id="servicios" class="section section-dark">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Lo que ofrecemos</span>
+        <h2 class="section-title">Nuestros <span class="gold-text">Servicios</span></h2>
+        <p class="section-sub">Cada evento merece un bar a la altura. Nosotros lo hacemos posible.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="service-icon"><i class="fas fa-rings-wedding"></i></div>
+          <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=600&q=80&fit=crop" alt="Bodas" />
+          <div class="service-content">
+            <h3>Bodas & Compromisos</h3>
+            <p>Barra abierta con cócteles personalizados, bartenders de etiqueta y decoración a tu estilo.</p>
+            <ul>
+              <li><i class="fas fa-check"></i> Cócteles signature</li>
+              <li><i class="fas fa-check"></i> Bartenders de etiqueta</li>
+              <li><i class="fas fa-check"></i> Cristalería premium</li>
+            </ul>
+          </div>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="service-icon"><i class="fas fa-building"></i></div>
+          <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=600&q=80&fit=crop" alt="Corporativos" />
+          <div class="service-content">
+            <h3>Eventos Corporativos</h3>
+            <p>Impresiona a tus clientes y colaboradores con una experiencia de bar de lujo en tu próximo evento.</p>
+            <ul>
+              <li><i class="fas fa-check"></i> Mocktails & cócteles</li>
+              <li><i class="fas fa-check"></i> Branding personalizado</li>
+              <li><i class="fas fa-check"></i> Servicio silencioso</li>
+            </ul>
+          </div>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="service-icon"><i class="fas fa-music"></i></div>
+          <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=600&q=80&fit=crop" alt="Festivales" />
+          <div class="service-content">
+            <h3>Festivales & Fiestas</h3>
+            <p>Música, ambiente y los mejores tragos. Llevamos el bar donde la fiesta ya existe.</p>
+            <ul>
+              <li><i class="fas fa-check"></i> Alta capacidad</li>
+              <li><i class="fas fa-check"></i> Servicio rápido</li>
+              <li><i class="fas fa-check"></i> Menú amplio</li>
+            </ul>
+          </div>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="service-icon"><i class="fas fa-home"></i></div>
+          <img src="https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=600&q=80&fit=crop" alt="Privados" />
+          <div class="service-content">
+            <h3>Eventos Privados</h3>
+            <p>Cumpleaños, quince años, reuniones familiares. Hacemos de tu casa el mejor bar de la ciudad.</p>
+            <ul>
+              <li><i class="fas fa-check"></i> Menú personalizado</li>
+              <li><i class="fas fa-check"></i> Setup completo</li>
+              <li><i class="fas fa-check"></i> Todo incluido</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY US ===== -->
+  <section class="section why-us">
+    <div class="why-bg">
+      <img src="https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=1920&q=80&fit=crop" alt="Cócteles" />
+      <div class="why-overlay"></div>
+    </div>
+    <div class="container">
+      <div class="why-grid">
+        <div class="why-text" data-aos="fade-right">
+          <span class="section-tag">¿Por qué elegirnos?</span>
+          <h2 class="section-title">Más que un <span class="gold-text">bar</span>,<br />una experiencia</h2>
+          <p>Somos bartenders profesionales con años de experiencia en los mejores eventos. Cada cóctel es una obra de arte que complementa tu celebración.</p>
+          <div class="why-features">
+            <div class="why-feature">
+              <div class="wf-icon"><i class="fas fa-award"></i></div>
+              <div>
+                <h4>Bartenders Certificados</h4>
+                <p>Profesionales con formación internacional y años de experiencia.</p>
+              </div>
+            </div>
+            <div class="why-feature">
+              <div class="wf-icon"><i class="fas fa-leaf"></i></div>
+              <div>
+                <h4>Ingredientes Premium</h4>
+                <p>Licores top-shelf, frutas frescas y siropes artesanales.</p>
+              </div>
+            </div>
+            <div class="why-feature">
+              <div class="wf-icon"><i class="fas fa-truck"></i></div>
+              <div>
+                <h4>Todo Incluido</h4>
+                <p>Bar, hielo, vasos, utensilios, decoración y limpieza.</p>
+              </div>
+            </div>
+            <div class="why-feature">
+              <div class="wf-icon"><i class="fas fa-headset"></i></div>
+              <div>
+                <h4>Atención 24/7</h4>
+                <p>Te acompañamos desde la planeación hasta el último trago.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="why-image" data-aos="fade-left">
+          <img src="https://images.unsplash.com/photo-1574096079513-d8259312b785?w=600&q=80&fit=crop" alt="Bartender profesional" />
+          <div class="why-badge">
+            <i class="fas fa-star"></i>
+            <span>+350<br/>eventos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== GALERÍA ===== -->
+  <section id="galeria" class="section section-dark">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Nuestro trabajo</span>
+        <h2 class="section-title">Galería de <span class="gold-text">momentos</span></h2>
+        <p class="section-sub">Cada imagen es una historia. Aquí van las nuestras.</p>
+      </div>
+      <div class="gallery-tabs" data-aos="fade-up">
+        <button class="gtab active" data-filter="all">Todos</button>
+        <button class="gtab" data-filter="bodas">Bodas</button>
+        <button class="gtab" data-filter="corporativos">Corporativos</button>
+        <button class="gtab" data-filter="fiestas">Fiestas</button>
+      </div>
+      <div class="gallery-grid" id="galleryGrid">
+        <div class="gallery-item" data-cat="bodas" data-aos="zoom-in" data-aos-delay="0">
+          <img src="https://images.unsplash.com/photo-1578911373434-0cb395d2cbfb?w=600&q=80&fit=crop" alt="Evento boda" loading="lazy" />
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+        <div class="gallery-item large" data-cat="corporativos" data-aos="zoom-in" data-aos-delay="50">
+          <img src="https://images.unsplash.com/photo-1533777324565-a040eb52facd?w=800&q=80&fit=crop" alt="Evento corporativo" loading="lazy" />
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-cat="fiestas" data-aos="zoom-in" data-aos-delay="100">
+          <img src="https://images.unsplash.com/photo-1516997121675-4c2d1684aa3e?w=600&q=80&fit=crop" alt="Fiesta" loading="lazy" />
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-cat="bodas" data-aos="zoom-in" data-aos-delay="150">
+          <img src="https://images.unsplash.com/photo-1546964124-0cce460f38ef?w=600&q=80&fit=crop" alt="Coctelería boda" loading="lazy" />
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+        <div class="gallery-item tall" data-cat="fiestas" data-aos="zoom-in" data-aos-delay="200">
+          <img src="https://images.unsplash.com/photo-1527761939622-933c53c27a06?w=600&q=80&fit=crop" alt="Bartender en acción" loading="lazy" />
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-cat="corporativos" data-aos="zoom-in" data-aos-delay="250">
+          <img src="https://images.unsplash.com/photo-1493770348161-369560ae357d?w=600&q=80&fit=crop" alt="Evento corporativo cócteles" loading="lazy" />
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-cat="bodas" data-aos="zoom-in" data-aos-delay="300">
+          <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=600&q=80&fit=crop" alt="Cócteles boda" loading="lazy" />
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+        <div class="gallery-item" data-cat="fiestas" data-aos="zoom-in" data-aos-delay="350">
+          <img src="https://images.unsplash.com/photo-1574096079513-d8259312b785?w=600&q=80&fit=crop" alt="Bartender fiesta" loading="lazy" />
+          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="lightbox">
+    <button class="lb-close"><i class="fas fa-times"></i></button>
+    <button class="lb-prev"><i class="fas fa-chevron-left"></i></button>
+    <button class="lb-next"><i class="fas fa-chevron-right"></i></button>
+    <img id="lbImg" src="" alt="" />
+  </div>
+
+  <!-- ===== EVENTOS ANTERIORES ===== -->
+  <section id="eventos" class="section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Nuestra historia</span>
+        <h2 class="section-title">Eventos <span class="gold-text">anteriores</span></h2>
+        <p class="section-sub">Una selección de los momentos que más nos enorgullecen.</p>
+      </div>
+      <div class="events-grid">
+        <article class="event-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="event-img">
+            <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=700&q=80&fit=crop" alt="Boda García-López" loading="lazy" />
+            <div class="event-tag">Boda</div>
+          </div>
+          <div class="event-body">
+            <span class="event-date"><i class="far fa-calendar"></i> Marzo 2025</span>
+            <h3>Boda García-López</h3>
+            <p>250 invitados · Jardín privado · 6 horas de open bar con 12 cócteles distintos personalizados para la pareja.</p>
+            <div class="event-stats">
+              <span><i class="fas fa-users"></i> 250 personas</span>
+              <span><i class="fas fa-clock"></i> 6 horas</span>
+              <span><i class="fas fa-cocktail"></i> 12 cócteles</span>
+            </div>
+          </div>
+        </article>
+        <article class="event-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="event-img">
+            <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=700&q=80&fit=crop" alt="Tech Summit 2024" loading="lazy" />
+            <div class="event-tag corporativo">Corporativo</div>
+          </div>
+          <div class="event-body">
+            <span class="event-date"><i class="far fa-calendar"></i> Noviembre 2024</span>
+            <h3>Tech Summit 2024</h3>
+            <p>Evento tecnológico anual. Coctelería sin alcohol y premium para 400 asistentes durante dos noches.</p>
+            <div class="event-stats">
+              <span><i class="fas fa-users"></i> 400 personas</span>
+              <span><i class="fas fa-clock"></i> 2 noches</span>
+              <span><i class="fas fa-cocktail"></i> 8 cócteles</span>
+            </div>
+          </div>
+        </article>
+        <article class="event-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="event-img">
+            <img src="https://images.unsplash.com/photo-1429962714451-bb934ecdc4ec?w=700&q=80&fit=crop" alt="Festival de Verano" loading="lazy" />
+            <div class="event-tag festival">Festival</div>
+          </div>
+          <div class="event-body">
+            <span class="event-date"><i class="far fa-calendar"></i> Agosto 2024</span>
+            <h3>Festival de Verano</h3>
+            <p>Festival al aire libre con 3 barras simultáneas. Más de 1,500 cócteles servidos en 8 horas de celebración.</p>
+            <div class="event-stats">
+              <span><i class="fas fa-users"></i> 600+ personas</span>
+              <span><i class="fas fa-clock"></i> 8 horas</span>
+              <span><i class="fas fa-cocktail"></i> 1,500+ cócteles</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RESEÑAS ===== -->
+  <section id="resenas" class="section section-dark reviews-section">
+    <div class="reviews-bg">
+      <img src="https://images.unsplash.com/photo-1543007630-9710e4a00a20?w=1920&q=80&fit=crop" alt="bg" />
+      <div class="reviews-overlay"></div>
+    </div>
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Testimonios</span>
+        <h2 class="section-title">Lo que dicen <span class="gold-text">nuestros clientes</span></h2>
+      </div>
+      <div class="reviews-track" id="reviewsTrack">
+        <div class="review-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"El bar de mi boda fue lo más comentado de la noche. Los cócteles eran increíbles y el equipo fue súper profesional. ¡Los contrataré de nuevo!"</p>
+          <div class="review-author">
+            <img src="https://i.pravatar.cc/60?img=47" alt="Ana M." />
+            <div>
+              <strong>Ana M.</strong>
+              <span>Boda · Marzo 2025</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"Llevamos el bar móvil a nuestro evento corporativo y fue un éxito total. Puntualidad, profesionalismo y sabores espectaculares. 100% recomendado."</p>
+          <div class="review-author">
+            <img src="https://i.pravatar.cc/60?img=12" alt="Carlos R." />
+            <div>
+              <strong>Carlos R.</strong>
+              <span>Corporativo · Enero 2025</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"Mi quinceañera fue perfecta gracias a ellos. El bar fue un show completo, los cócteles sin alcohol que prepararon fueron deliciosos y originales."</p>
+          <div class="review-author">
+            <img src="https://i.pravatar.cc/60?img=32" alt="Sofía V." />
+            <div>
+              <strong>Sofía V.</strong>
+              <span>Quinceañera · Dic 2024</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="review-text">"Organicé un festival pequeño y decidí contratar el bar móvil. Fue la mejor decisión. Llegaron antes, montaron todo rápido y la gente no paraba de pedir cócteles."</p>
+          <div class="review-author">
+            <img src="https://i.pravatar.cc/60?img=8" alt="Marcos L." />
+            <div>
+              <strong>Marcos L.</strong>
+              <span>Festival · Oct 2024</span>
+            </div>
+          </div>
+        </div>
+        <div class="review-card" data-aos="fade-up" data-aos-delay="500">
+          <div class="review-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">"Nos crearon un cóctel signature con el nombre de los novios. Todos los invitados se lo llevaron como recuerdo en botellitas personalizadas. ¡Geniales!"</p>
+          <div class="review-author">
+            <img src="https://i.pravatar.cc/60?img=25" alt="Lucía P." />
+            <div>
+              <strong>Lucía P.</strong>
+              <span>Boda · Sep 2024</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reviews-nav">
+        <button id="revPrev"><i class="fas fa-arrow-left"></i></button>
+        <div class="reviews-dots" id="reviewsDots"></div>
+        <button id="revNext"><i class="fas fa-arrow-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PAQUETES ===== -->
+  <section class="section packages-section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Paquetes</span>
+        <h2 class="section-title">Elige tu <span class="gold-text">experiencia</span></h2>
+        <p class="section-sub">Precios desde la puesta hasta el último trago.</p>
+      </div>
+      <div class="packages-grid">
+        <div class="package-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="pkg-header">
+            <span class="pkg-icon"><i class="fas fa-wine-glass"></i></span>
+            <h3>Básico</h3>
+            <div class="pkg-price">Desde <strong>$299</strong><span>/evento</span></div>
+          </div>
+          <ul class="pkg-features">
+            <li><i class="fas fa-check"></i> 2 bartenders</li>
+            <li><i class="fas fa-check"></i> 4 cócteles en menú</li>
+            <li><i class="fas fa-check"></i> Hasta 80 personas</li>
+            <li><i class="fas fa-check"></i> 4 horas de servicio</li>
+            <li><i class="fas fa-check"></i> Vasos y utensilios</li>
+            <li class="disabled"><i class="fas fa-times"></i> Decoración temática</li>
+            <li class="disabled"><i class="fas fa-times"></i> Cóctel signature</li>
+          </ul>
+          <a href="#contacto" class="btn btn-outline-gold">Cotizar</a>
+        </div>
+        <div class="package-card featured" data-aos="fade-up" data-aos-delay="200">
+          <div class="pkg-badge">Más popular</div>
+          <div class="pkg-header">
+            <span class="pkg-icon"><i class="fas fa-cocktail"></i></span>
+            <h3>Premium</h3>
+            <div class="pkg-price">Desde <strong>$549</strong><span>/evento</span></div>
+          </div>
+          <ul class="pkg-features">
+            <li><i class="fas fa-check"></i> 3 bartenders</li>
+            <li><i class="fas fa-check"></i> 8 cócteles en menú</li>
+            <li><i class="fas fa-check"></i> Hasta 150 personas</li>
+            <li><i class="fas fa-check"></i> 6 horas de servicio</li>
+            <li><i class="fas fa-check"></i> Vasos y utensilios</li>
+            <li><i class="fas fa-check"></i> Decoración temática</li>
+            <li class="disabled"><i class="fas fa-times"></i> Cóctel signature</li>
+          </ul>
+          <a href="#contacto" class="btn btn-gold">Cotizar</a>
+        </div>
+        <div class="package-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="pkg-header">
+            <span class="pkg-icon"><i class="fas fa-crown"></i></span>
+            <h3>Élite</h3>
+            <div class="pkg-price">Desde <strong>$899</strong><span>/evento</span></div>
+          </div>
+          <ul class="pkg-features">
+            <li><i class="fas fa-check"></i> 5 bartenders</li>
+            <li><i class="fas fa-check"></i> Menú ilimitado</li>
+            <li><i class="fas fa-check"></i> Personas ilimitadas</li>
+            <li><i class="fas fa-check"></i> Horas ilimitadas</li>
+            <li><i class="fas fa-check"></i> Cristalería premium</li>
+            <li><i class="fas fa-check"></i> Decoración de lujo</li>
+            <li><i class="fas fa-check"></i> Cóctel signature exclusivo</li>
+          </ul>
+          <a href="#contacto" class="btn btn-outline-gold">Cotizar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== DISPONIBILIDAD ===== -->
+  <section id="disponibilidad" class="section section-dark">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Agenda tu evento</span>
+        <h2 class="section-title">Consulta <span class="gold-text">disponibilidad</span></h2>
+        <p class="section-sub">Selecciona la fecha de tu evento y verifica si estamos disponibles.</p>
+      </div>
+      <div class="availability-grid">
+        <div class="calendar-wrapper" data-aos="fade-right">
+          <div id="datepicker"></div>
+          <div class="calendar-legend">
+            <span class="leg-item"><span class="leg-dot available"></span>Disponible</span>
+            <span class="leg-item"><span class="leg-dot busy"></span>Ocupado</span>
+            <span class="leg-item"><span class="leg-dot selected"></span>Seleccionado</span>
+          </div>
+        </div>
+        <div class="availability-info" data-aos="fade-left">
+          <div id="dateInfo" class="date-info-box">
+            <div class="dib-icon"><i class="far fa-calendar-check"></i></div>
+            <h3>Selecciona una fecha</h3>
+            <p>Haz clic en el calendario para ver la disponibilidad del día.</p>
+          </div>
+          <div class="avail-cta">
+            <p>¿Encontraste tu fecha? Contáctanos para reservar antes de que alguien más lo haga.</p>
+            <a href="https://wa.me/15555550100?text=Hola!%20Quiero%20reservar%20la%20fecha%20para%20mi%20evento%20%F0%9F%8D%B9" target="_blank" class="btn btn-gold">
+              <i class="fab fa-whatsapp"></i> Reservar por WhatsApp
+            </a>
+            <a href="tel:+15555550100" class="btn btn-outline">
+              <i class="fas fa-phone"></i> Llamar ahora
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACTO ===== -->
+  <section id="contacto" class="section">
+    <div class="container">
+      <div class="section-header" data-aos="fade-up">
+        <span class="section-tag">Hablemos</span>
+        <h2 class="section-title">Cotiza tu <span class="gold-text">evento</span></h2>
+        <p class="section-sub">Cuéntanos sobre tu evento y te enviamos una propuesta en menos de 24 horas.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info" data-aos="fade-right">
+          <div class="contact-item">
+            <div class="ci-icon"><i class="fas fa-phone-alt"></i></div>
+            <div>
+              <span>Teléfono</span>
+              <a href="tel:+15555550100">+1 (555) 555-0100</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon"><i class="fab fa-whatsapp"></i></div>
+            <div>
+              <span>WhatsApp</span>
+              <a href="https://wa.me/15555550100" target="_blank">+1 (555) 555-0100</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <span>Email</span>
+              <a href="mailto:hola@nomadbar.mx">hola@nomadbar.mx</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <span>Zona de cobertura</span>
+              <p>Ciudad de México y área metropolitana</p>
+            </div>
+          </div>
+          <div class="contact-social">
+            <a href="#" class="social-btn" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-btn" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-btn" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="https://wa.me/15555550100" class="social-btn wa" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <form class="contact-form" id="contactForm" data-aos="fade-left" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre completo *</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required />
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono / WhatsApp *</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="+1 555 555 0100" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="tu@correo.com" />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="tipoEvento">Tipo de evento *</label>
+              <select id="tipoEvento" name="tipoEvento" required>
+                <option value="">Selecciona...</option>
+                <option>Boda</option>
+                <option>Quinceañera</option>
+                <option>Corporativo</option>
+                <option>Festival</option>
+                <option>Cumpleaños</option>
+                <option>Graduación</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="fecha">Fecha del evento *</label>
+              <input type="text" id="fecha" name="fecha" placeholder="Selecciona fecha" readonly required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="personas">Número de personas *</label>
+              <input type="number" id="personas" name="personas" placeholder="Ej. 100" min="1" required />
+            </div>
+            <div class="form-group">
+              <label for="horas">Horas de servicio</label>
+              <select id="horas" name="horas">
+                <option value="">Selecciona...</option>
+                <option>3 horas</option>
+                <option>4 horas</option>
+                <option>5 horas</option>
+                <option>6 horas</option>
+                <option>+6 horas</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Cuéntanos más sobre tu evento</label>
+            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Ubicación, tema, requerimientos especiales..."></textarea>
+          </div>
+          <button type="submit" class="btn btn-gold btn-full">
+            <i class="fas fa-paper-plane"></i> Enviar Solicitud
+          </button>
+          <div id="formMsg" class="form-msg"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#inicio" class="nav-logo">NOMAD<span>BAR</span></a>
+          <p>Bar móvil premium para eventos inolvidables. Llevamos la experiencia hasta donde tú la necesites.</p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+        <div class="footer-links">
+          <h4>Navegación</h4>
+          <ul>
+            <li><a href="#servicios">Servicios</a></li>
+            <li><a href="#galeria">Galería</a></li>
+            <li><a href="#eventos">Eventos</a></li>
+            <li><a href="#resenas">Reseñas</a></li>
+            <li><a href="#disponibilidad">Disponibilidad</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+          </ul>
+        </div>
+        <div class="footer-links">
+          <h4>Servicios</h4>
+          <ul>
+            <li><a href="#servicios">Bodas</a></li>
+            <li><a href="#servicios">Corporativos</a></li>
+            <li><a href="#servicios">Festivales</a></li>
+            <li><a href="#servicios">Eventos privados</a></li>
+          </ul>
+        </div>
+        <div class="footer-contact">
+          <h4>Contacto rápido</h4>
+          <a href="https://wa.me/15555550100" class="footer-wa" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span>Escríbenos por<br/><strong>WhatsApp</strong></span>
+          </a>
+          <a href="tel:+15555550100" class="footer-phone">
+            <i class="fas fa-phone"></i> +1 (555) 555-0100
+          </a>
+          <a href="mailto:hola@nomadbar.mx" class="footer-email">
+            <i class="fas fa-envelope"></i> hola@nomadbar.mx
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2025 NOMAD BAR. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== FLOATING BUTTONS ===== -->
+  <a href="https://wa.me/15555550100?text=Hola!%20Me%20interesa%20el%20bar%20m%C3%B3vil%20para%20mi%20evento%20%F0%9F%8D%B9" class="fab-wa" target="_blank" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+    <span class="fab-tooltip">¡Escríbenos!</span>
+  </a>
+
+  <!-- ===== CHATBOT ===== -->
+  <div class="chatbot-container" id="chatbot">
+    <div class="chatbot-header" id="chatbotToggle">
+      <div class="chatbot-avatar">
+        <i class="fas fa-cocktail"></i>
+      </div>
+      <div class="chatbot-header-info">
+        <strong>Nomad Bot</strong>
+        <span class="chatbot-status"><i class="fas fa-circle"></i> En línea</span>
+      </div>
+      <button class="chatbot-close-btn" id="chatbotClose"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="chatbot-messages" id="chatMessages">
+      <div class="msg bot-msg">
+        <div class="msg-bubble">
+          ¡Hola! 🍹 Soy el asistente de <strong>Nomad Bar</strong>. ¿En qué puedo ayudarte hoy?
+        </div>
+      </div>
+      <div class="chatbot-quick-btns" id="quickBtns">
+        <button class="quick-btn" data-q="precios">💰 Precios</button>
+        <button class="quick-btn" data-q="servicios">🍸 Servicios</button>
+        <button class="quick-btn" data-q="disponibilidad">📅 Disponibilidad</button>
+        <button class="quick-btn" data-q="cobertura">📍 Cobertura</button>
+        <button class="quick-btn" data-q="contacto">📞 Contacto</button>
+        <button class="quick-btn" data-q="bartenders">👨‍🍳 Bartenders</button>
+      </div>
+    </div>
+    <div class="chatbot-input-area">
+      <input type="text" id="chatInput" placeholder="Escribe tu pregunta..." autocomplete="off" />
+      <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  <button class="chatbot-bubble" id="chatbotBubble" aria-label="Abrir chat">
+    <i class="fas fa-comment-dots" id="bubbleIcon"></i>
+    <span class="chatbot-notify">1</span>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/es.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
