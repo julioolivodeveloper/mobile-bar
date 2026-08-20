@@ -1938,64 +1938,53 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* =============================
-   FLOATING COCKTAIL GLASSES
+   FLOATING DRINK ANIMATION
    ============================= */
 
-/* Outer wrapper — JS controls transform (parallax + tilt) */
-.ct-wrap {
+.drink-float-wrap {
   position: fixed;
   top: 50%;
-  z-index: 45;
+  z-index: 40;
   pointer-events: none;
-  transform: translateY(-50%);   /* centered until JS kicks in */
+  width: 125px;
+  height: 165px;
+  transform: translateY(-50%);
 }
-#ctLeft  { left: -18px; }
-#ctRight { right: -18px; }
+#drinkLeft  { left:  -28px; }
+#drinkRight { right: -28px; }
 
-/* SVG sizing — float animation lives HERE, not on wrapper */
-#ctLeft  svg { width: 105px; display: block; animation: floatL 5s   ease-in-out infinite; }
-#ctRight svg { width:  90px; display: block; animation: floatR 5.8s ease-in-out infinite; }
-
-@keyframes floatL {
-  0%,100% { transform: translateY(0px) rotate(-5deg); }
-  50%     { transform: translateY(-13px) rotate(-5deg); }
-}
-@keyframes floatR {
-  0%,100% { transform: translateY(6px)  rotate(5deg); }
-  50%     { transform: translateY(-7px) rotate(5deg); }
+.drink-slot {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+  will-change: opacity, transform;
 }
 
-/* Liquid tilt sloshing */
-#liqLeftPoly  { transform-origin: 100px 172px; animation: tiltL 3.6s ease-in-out infinite alternate; }
-#liqRightPath { transform-origin: 100px 207px; animation: tiltR 4.3s ease-in-out infinite alternate; }
-@keyframes tiltL { from { transform: rotate(-2deg); } to { transform: rotate(2deg); } }
-@keyframes tiltR { from { transform: rotate(2deg);  } to { transform: rotate(-2deg); } }
+.drink-slot.active { opacity: 1; }
 
-/* Bubbles — martini */
-.bub-m { animation: bubM 2.8s ease-in infinite; }
-@keyframes bubM {
-  0%   { opacity: 0.6; transform: translateY(0) scale(1); }
-  70%  { opacity: 0.3; }
-  100% { opacity: 0;   transform: translateY(-65px) scale(0.35); }
+.drink-slot img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-/* Bubbles — rocks */
-.bub-r { animation: bubR 3.2s ease-in infinite; }
-@keyframes bubR {
-  0%   { opacity: 0.55; transform: translateY(0) scale(1); }
-  70%  { opacity: 0.28; }
-  100% { opacity: 0;    transform: translateY(-108px) scale(0.3); }
+/* Left drinks: slight lean left, float gently */
+#drinkLeft  .drink-slot { animation: drinkFloatL 5s   ease-in-out infinite; }
+/* Right drinks: lean right, offset timing */
+#drinkRight .drink-slot { animation: drinkFloatR 5.8s ease-in-out infinite; }
+
+@keyframes drinkFloatL {
+  0%, 100% { transform: translateY(0px)   rotate(-4deg); }
+  40%       { transform: translateY(-13px) rotate(-4deg); }
+  70%       { transform: translateY(-18px) rotate(-4deg); }
+}
+@keyframes drinkFloatR {
+  0%, 100% { transform: translateY(5px)   rotate(4deg); }
+  35%       { transform: translateY(-10px) rotate(4deg); }
+  65%       { transform: translateY(-16px) rotate(4deg); }
 }
 
-/* Rim sparkles */
-.sparkle { animation: sparkPop 4s ease-in-out infinite; }
-@keyframes sparkPop {
-  0%,84%,100% { opacity: 0;   transform: scale(0.2); }
-  87%          { opacity: 1;   transform: scale(2); }
-  92%          { opacity: 0.5; transform: scale(1); }
-}
-
-/* Hide on narrow screens */
 @media (max-width: 960px) {
-  .ct-wrap { display: none; }
+  .drink-float-wrap { display: none; }
 }
