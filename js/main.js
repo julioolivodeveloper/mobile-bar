@@ -382,3 +382,250 @@ window.addEventListener('scroll', () => {
     }
   });
 }, { passive: true });
+
+// ===== BOOKING MODAL =====
+(function() {
+  const modal     = document.getElementById('bookingModal');
+  const backdrop  = document.getElementById('bmBackdrop');
+  const closeBtn  = document.getElementById('bmClose');
+  const btnNext   = document.getElementById('bmNext');
+  const btnBack   = document.getElementById('bmBack');
+  const btnSend   = document.getElementById('bmSend');
+  const progBar   = document.getElementById('bmProgressBar');
+  const curEl     = document.getElementById('bmCurrent');
+  const totalEl   = document.getElementById('bmTotal');
+
+  const TOTAL_STEPS = 6;
+  let currentStep = 1;
+  let goingBack   = false;
+
+  const data = { eventType:'', location:'', city:'', guests:50, date:'', contactMethod:'', name:'', contactInfo:'' };
+
+  // Open/close
+  function openModal() {
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    goTo(1, false);
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.getElementById('openBooking').addEventListener('click', openModal);
+  document.getElementById('openBookingNav').addEventListener('click', e => { e.preventDefault(); openModal(); });
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  // Navigate to step
+  function goTo(step, back) {
+    const steps = document.querySelectorAll('.bm-step');
+    const prev  = document.querySelector('.bm-step.active');
+
+    if (prev) {
+      prev.classList.remove('active');
+      prev.classList.add('slide-out');
+      setTimeout(() => prev.classList.remove('slide-out'), 260);
+    }
+
+    currentStep = step;
+    const next = document.querySelector(`.bm-step[data-step="${step}"]`);
+    if (!next) return;
+    next.classList.remove('slide-in-back');
+    void next.offsetWidth;
+    next.classList.add('active');
+    if (back) next.classList.add('slide-in-back');
+
+    // Progress
+    const pct = ((step - 1) / (TOTAL_STEPS - 1)) * 100;
+    progBar.style.width = pct + '%';
+    curEl.textContent  = step;
+    totalEl.textContent = TOTAL_STEPS;
+
+    // Buttons
+    btnBack.disabled = step === 1;
+    btnBack.style.opacity = step === 1 ? '0.3' : '1';
+    btnBack.style.pointerEvents = step === 1 ? 'none' : 'auto';
+
+    if (step === TOTAL_STEPS) {
+      btnNext.style.display = 'none';
+      btnSend.style.display = 'inline-flex';
+      buildSummary();
+    } else {
+      btnNext.style.display = 'inline-flex';
+      btnSend.style.display = 'none';
+    }
+
+    // Init calendar on step 4
+    if (step === 4 && !window._bmCalReady) initBmCalendar();
+
+    // Scroll panel to top
+    document.getElementById('bmStepsWrap').scrollTop = 0;
+  }
+
+  // Validate current step before moving forward
+  function validate() {
+    if (currentStep === 1) {
+      if (!data.eventType) { shake(document.querySelector('[data-step="1"] .bm-options-grid')); return false; }
+    }
+    if (currentStep === 2) {
+      const loc = document.getElementById('bm-location').value.trim();
+      const city = document.getElementById('bm-city').value.trim();
+      if (!loc) { shake(document.getElementById('bm-location').parentElement); return false; }
+      if (!city) { shake(document.getElementById('bm-city').parentElement); return false; }
+      data.location = loc; data.city = city;
+    }
+    if (currentStep === 3) {
+      data.guests = parseInt(document.getElementById('guestsNum').textContent);
+    }
+    if (currentStep === 4) {
+      if (!data.date) { shake(document.getElementById('bmDateStatus')); return false; }
+    }
+    if (currentStep === 5) {
+      if (!data.contactMethod) { shake(document.querySelector('[data-step="5"] .bm-options-grid')); return false; }
+      const name = document.getElementById('bm-name').value.trim();
+      const info = document.getElementById('bm-contactinfo').value.trim();
+      if (!name) { shake(document.getElementById('bm-name').parentElement); return false; }
+      if (!info) { shake(document.getElementById('bm-contactinfo').parentElement); return false; }
+      data.name = name; data.contactInfo = info;
+    }
+    return true;
+  }
+
+  btnNext.addEventListener('click', () => {
+    if (!validate()) return;
+    if (currentStep < TOTAL_STEPS) goTo(currentStep + 1, false);
+  });
+  btnBack.addEventListener('click', () => {
+    if (currentStep > 1) goTo(currentStep - 1, true);
+  });
+
+  // Shake helper
+  function shake(el) {
+    el.classList.remove('shake');
+    void el.offsetWidth;
+    el.classList.add('shake');
+    setTimeout(() => el.classList.remove('shake'), 450);
+  }
+
+  // ---- STEP 1: Event type options ----
+  document.querySelectorAll('[data-field="eventType"] .bm-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-field="eventType"] .bm-option').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      data.eventType = btn.dataset.value;
+      setTimeout(() => { if (validate()) goTo(2, false); }, 200);
+    });
+  });
+
+  // ---- STEP 3: Guests ----
+  const guestsNum   = document.getElementById('guestsNum');
+  const guestsRange = document.getElementById('guestsRange');
+  const pkgText     = document.getElementById('pkgText');
+
+  function updateGuests(val) {
+    val = Math.max(10, Math.min(500, val));
+    guestsNum.textContent = val;
+    guestsRange.value = val;
+    data.guests = val;
+    let pkg = val <= 80 ? 'Basic' : val <= 150 ? 'Premium' : 'Elite';
+    pkgText.innerHTML = `We recommend the <strong>${pkg}</strong> package for this group size.`;
+  }
+
+  document.getElementById('guestsMinus').addEventListener('click', () => updateGuests(data.guests - 5));
+  document.getElementById('guestsPlus').addEventListener('click', () => updateGuests(data.guests + 5));
+  guestsRange.addEventListener('input', () => updateGuests(parseInt(guestsRange.value)));
+
+  // ---- STEP 4: Calendar ----
+  const bookedDates = [
+    "2025-09-06","2025-09-07","2025-09-13","2025-09-14","2025-09-20","2025-09-21",
+    "2025-10-04","2025-10-11","2025-10-18","2025-10-25",
+    "2025-11-01","2025-11-08","2025-11-15",
+    "2025-12-06","2025-12-13","2025-12-20","2025-12-31"
+  ];
+
+  function initBmCalendar() {
+    window._bmCalReady = true;
+    flatpickr('#bmDatepicker', {
+      inline: true,
+      minDate: 'today',
+      dateFormat: 'Y-m-d',
+      onDayCreate(dObj, dStr, fp, dayElem) {
+        const ds = dayElem.dateObj.toISOString().split('T')[0];
+        if (bookedDates.includes(ds)) {
+          dayElem.classList.add('booked');
+          dayElem.title = 'Already booked';
+        } else if (dayElem.dateObj >= new Date()) {
+          dayElem.classList.add('available');
+        }
+      },
+      onChange(sel, dateStr) {
+        const status = document.getElementById('bmDateStatus');
+        if (!dateStr) return;
+        if (bookedDates.includes(dateStr)) {
+          data.date = '';
+          status.className = 'bm-date-status err';
+          status.innerHTML = '<i class="fas fa-times-circle"></i> This date is already booked — pick another!';
+        } else {
+          data.date = dateStr;
+          status.className = 'bm-date-status ok';
+          status.innerHTML = `<i class="fas fa-check-circle"></i> <strong>${dateStr}</strong> is available!`;
+        }
+      }
+    });
+  }
+
+  // ---- STEP 5: Contact method ----
+  document.querySelectorAll('[data-field="contactMethod"] .bm-option').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-field="contactMethod"] .bm-option').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      data.contactMethod = btn.dataset.value;
+
+      const infoWrap  = document.getElementById('bmContactInfoWrap');
+      const infoLabel = document.getElementById('bmContactInfoLabel');
+      const infoInput = document.getElementById('bm-contactinfo');
+      const infoIcon  = document.getElementById('bmContactInfoIcon');
+
+      infoWrap.style.display  = 'flex';
+      infoLabel.style.display = 'block';
+
+      const cfg = {
+        WhatsApp: { placeholder: 'Your WhatsApp number', icon: 'fab fa-whatsapp', type: 'tel' },
+        Phone:    { placeholder: 'Your phone number',    icon: 'fas fa-phone',    type: 'tel' },
+        Email:    { placeholder: 'Your email address',   icon: 'fas fa-envelope', type: 'email' },
+      };
+      const c = cfg[data.contactMethod];
+      infoInput.placeholder = c.placeholder;
+      infoInput.type = c.type;
+      infoIcon.className = c.icon;
+      infoLabel.textContent = c.placeholder;
+    });
+  });
+
+  // ---- STEP 6: Summary ----
+  function buildSummary() {
+    document.getElementById('sum-event').textContent    = data.eventType   || '—';
+    document.getElementById('sum-location').textContent = data.location && data.city ? `${data.location}, ${data.city}` : data.location || '—';
+    document.getElementById('sum-guests').textContent   = data.guests + ' guests';
+    document.getElementById('sum-date').textContent     = data.date        || '—';
+    document.getElementById('sum-contact').textContent  = data.contactMethod ? `${data.contactMethod} — ${data.contactInfo}` : '—';
+    document.getElementById('sum-name').textContent     = data.name        || '—';
+  }
+
+  // ---- SEND ----
+  btnSend.addEventListener('click', () => {
+    const result = document.getElementById('bmFormResult');
+    btnSend.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+    btnSend.disabled = true;
+
+    setTimeout(() => {
+      result.className = 'bm-form-result success';
+      result.innerHTML = `✅ <strong>Booking request sent!</strong> We'll contact you via ${data.contactMethod} within 2 hours. Thanks, ${data.name}! 🍹`;
+      btnSend.style.display = 'none';
+      btnBack.style.display = 'none';
+    }, 1800);
+  });
+
+})();
