@@ -42,43 +42,6 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 3px; }
 
 /* ===== LOADER ===== */
-#loader {
-  position: fixed;
-  inset: 0;
-  background: var(--dark);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.6s ease, visibility 0.6s ease;
-}
-#loader.hidden { opacity: 0; visibility: hidden; }
-.loader-inner { text-align: center; }
-.loader-logo {
-  font-family: var(--font-display);
-  font-size: 4rem;
-  font-weight: 900;
-  color: var(--gold);
-  letter-spacing: 4px;
-  margin-bottom: 2rem;
-  animation: pulse 1.5s ease infinite;
-}
-.loader-bar {
-  width: 200px;
-  height: 2px;
-  background: rgba(212,175,55,0.2);
-  border-radius: 2px;
-  margin: 0 auto;
-  overflow: hidden;
-}
-.loader-fill {
-  height: 100%;
-  width: 0;
-  background: var(--gold);
-  animation: loadFill 2s ease forwards;
-}
-@keyframes loadFill { to { width: 100%; } }
-@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:0.5; } }
 
 /* ===== NAVBAR ===== */
 #navbar {

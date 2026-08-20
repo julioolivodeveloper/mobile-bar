@@ -2,12 +2,6 @@
    NOMAD BAR — Main JS
    ============================= */
 
-// ===== LOADER =====
-window.addEventListener('load', () => {
-  const loader = document.getElementById('loader');
-  setTimeout(() => loader.classList.add('hidden'), 2200);
-});
-
 // ===== AOS INIT =====
 AOS.init({ duration: 700, once: true, offset: 60 });
 
