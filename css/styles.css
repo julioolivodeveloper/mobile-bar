@@ -2142,8 +2142,10 @@ span.flatpickr-weekday {
 .section-header { position: relative; }
 
 .section-drink {
-  display: block;
-  width: 80px;
+  display: block !important;
+  width: 72px !important;
+  max-width: 72px !important;
+  height: auto !important;
   margin: 0 auto 1.25rem;
   filter: drop-shadow(0 8px 20px rgba(212,175,55,0.45));
   animation: sectionDrinkFloat 4.5s ease-in-out infinite;
