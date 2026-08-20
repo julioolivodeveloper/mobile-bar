@@ -414,6 +414,7 @@ window.addEventListener('scroll', () => {
 
   document.getElementById('openBooking').addEventListener('click', openModal);
   document.getElementById('openBookingNav').addEventListener('click', e => { e.preventDefault(); openModal(); });
+  document.querySelectorAll('.open-booking-btn').forEach(btn => btn.addEventListener('click', openModal));
   closeBtn.addEventListener('click', closeModal);
   backdrop.addEventListener('click', closeModal);
   document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
