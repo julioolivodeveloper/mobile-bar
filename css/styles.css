@@ -1941,97 +1941,61 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    FLOATING COCKTAIL GLASSES
    ============================= */
 
+/* Outer wrapper — JS controls transform (parallax + tilt) */
 .ct-wrap {
   position: fixed;
   top: 50%;
   z-index: 45;
   pointer-events: none;
-  will-change: transform, filter, opacity;
+  transform: translateY(-50%);   /* centered until JS kicks in */
 }
-#ctLeft {
-  left: -38px;
-  width: 148px;
-  transform: translateY(-50%) rotate(-6deg);
-}
-#ctRight {
-  right: -38px;
-  width: 130px;
-  transform: translateY(-50%) rotate(6deg);
-}
+#ctLeft  { left: -18px; }
+#ctRight { right: -18px; }
 
-/* Float oscillation */
-#ctLeft  { animation: floatL 5s ease-in-out infinite; }
-#ctRight { animation: floatR 5.8s ease-in-out infinite; }
+/* SVG sizing — float animation lives HERE, not on wrapper */
+#ctLeft  svg { width: 105px; display: block; animation: floatL 5s   ease-in-out infinite; }
+#ctRight svg { width:  90px; display: block; animation: floatR 5.8s ease-in-out infinite; }
+
 @keyframes floatL {
-  0%,100% { margin-top:  0px; }
-  50%      { margin-top: -14px; }
+  0%,100% { transform: translateY(0px) rotate(-5deg); }
+  50%     { transform: translateY(-13px) rotate(-5deg); }
 }
 @keyframes floatR {
-  0%,100% { margin-top: -8px; }
-  50%      { margin-top: 8px; }
+  0%,100% { transform: translateY(6px)  rotate(5deg); }
+  50%     { transform: translateY(-7px) rotate(5deg); }
 }
 
-/* Liquid wave sloshing */
-#waveL, #waveR {
-  animation: waveSway 3.5s ease-in-out infinite alternate;
-  transform-origin: center;
-}
-#waveR { animation-duration: 4.2s; animation-direction: alternate-reverse; }
-@keyframes waveSway {
-  from { d: path("M 62,105 Q 81,108 100,105 Q 119,102 138,105"); }
-  to   { d: path("M 62,105 Q 81,102 100,105 Q 119,108 138,105"); }
-}
-
-/* Liquid sloshing tilt */
-#liqLeftPoly {
-  transform-origin: 100px 172px;
-  animation: tiltL 3.5s ease-in-out infinite alternate;
-}
-#liqRightPath {
-  transform-origin: 100px 200px;
-  animation: tiltR 4.2s ease-in-out infinite alternate;
-}
-@keyframes tiltL {
-  from { transform: rotate(-1.5deg); }
-  to   { transform: rotate(1.5deg);  }
-}
-@keyframes tiltR {
-  from { transform: rotate(1.5deg);  }
-  to   { transform: rotate(-1.5deg); }
-}
+/* Liquid tilt sloshing */
+#liqLeftPoly  { transform-origin: 100px 172px; animation: tiltL 3.6s ease-in-out infinite alternate; }
+#liqRightPath { transform-origin: 100px 207px; animation: tiltR 4.3s ease-in-out infinite alternate; }
+@keyframes tiltL { from { transform: rotate(-2deg); } to { transform: rotate(2deg); } }
+@keyframes tiltR { from { transform: rotate(2deg);  } to { transform: rotate(-2deg); } }
 
 /* Bubbles — martini */
-.bub-m {
-  animation: bubM 2.8s ease-in infinite;
-  transform-origin: center;
-}
+.bub-m { animation: bubM 2.8s ease-in infinite; }
 @keyframes bubM {
   0%   { opacity: 0.6; transform: translateY(0) scale(1); }
-  70%  { opacity: 0.35; }
-  100% { opacity: 0; transform: translateY(-68px) scale(0.4); }
+  70%  { opacity: 0.3; }
+  100% { opacity: 0;   transform: translateY(-65px) scale(0.35); }
 }
 
 /* Bubbles — rocks */
-.bub-r {
-  animation: bubR 3.2s ease-in infinite;
-}
+.bub-r { animation: bubR 3.2s ease-in infinite; }
 @keyframes bubR {
   0%   { opacity: 0.55; transform: translateY(0) scale(1); }
-  70%  { opacity: 0.3; }
-  100% { opacity: 0; transform: translateY(-110px) scale(0.3); }
+  70%  { opacity: 0.28; }
+  100% { opacity: 0;    transform: translateY(-108px) scale(0.3); }
 }
 
-/* Sparkles on rim */
-.sparkle {
-  animation: sparkPop 4s ease-in-out infinite;
-}
+/* Rim sparkles */
+.sparkle { animation: sparkPop 4s ease-in-out infinite; }
 @keyframes sparkPop {
-  0%,85%,100% { opacity: 0;   transform: scale(0.3); }
-  88%          { opacity: 1;   transform: scale(1.8); }
-  92%          { opacity: 0.6; transform: scale(1); }
+  0%,84%,100% { opacity: 0;   transform: scale(0.2); }
+  87%          { opacity: 1;   transform: scale(2); }
+  92%          { opacity: 0.5; transform: scale(1); }
 }
 
 /* Hide on narrow screens */
-@media (max-width: 900px) {
+@media (max-width: 960px) {
   .ct-wrap { display: none; }
 }

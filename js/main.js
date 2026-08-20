@@ -680,16 +680,14 @@ window.addEventListener('scroll', () => {
     tiltAngle   = Math.max(-10, Math.min(10, tiltAngle * 0.85 + speed * 0.25));
     lastScrollY = scrollY;
 
-    // Parallax — left slower, right faster
+    // Parallax — wrapper only moves vertically (rotation is on SVG via CSS)
     const yL = scrollY * -0.18;
     const yR = scrollY * -0.30;
 
-    // Base rotation + scroll tilt
-    const rotL = -6 + tiltAngle * 0.5;
-    const rotR =  6 + tiltAngle * 0.5;
-
-    ctL.style.transform = `translateY(calc(-50% + ${yL}px)) rotate(${rotL}deg)`;
-    ctR.style.transform = `translateY(calc(-50% + ${yR}px)) rotate(${rotR}deg)`;
+    // Wrapper: just vertical centering + parallax offset
+    // Rotation/float lives on the SVG via CSS keyframes — no conflict
+    ctL.style.transform = `translateY(calc(-50% + ${yL}px))`;
+    ctR.style.transform = `translateY(calc(-50% + ${yR}px))`;
 
     // Color transition
     const [r, g, b] = getColor(pct);
