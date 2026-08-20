@@ -1946,53 +1946,28 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 /* =============================
-   FLOATING DRINK ANIMATION
+   SECTION DRINK DECORATIONS
    ============================= */
 
-.drink-float-wrap {
-  position: fixed;
-  top: 50%;
-  z-index: 40;
-  pointer-events: none;
-  width: 125px;
-  height: 165px;
-  transform: translateY(-50%);
-}
-#drinkLeft  { left:  -28px; }
-#drinkRight { right: -28px; }
+.section-header { position: relative; }
 
-.drink-slot {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.9s ease;
-  will-change: opacity, transform;
-}
-
-.drink-slot.active { opacity: 1; }
-
-.drink-slot img {
-  width: 100%;
-  height: auto;
+.section-drink {
   display: block;
+  width: 80px;
+  margin: 0 auto 1.25rem;
+  filter: drop-shadow(0 8px 20px rgba(212,175,55,0.45));
+  animation: sectionDrinkFloat 4.5s ease-in-out infinite;
+  pointer-events: none;
 }
 
-/* Left drinks: slight lean left, float gently */
-#drinkLeft  .drink-slot { animation: drinkFloatL 5s   ease-in-out infinite; }
-/* Right drinks: lean right, offset timing */
-#drinkRight .drink-slot { animation: drinkFloatR 5.8s ease-in-out infinite; }
+.sd-left  { transform: rotate(-10deg); animation-name: sectionDrinkFloatL; }
+.sd-right { transform: rotate(10deg);  animation-name: sectionDrinkFloatR; }
 
-@keyframes drinkFloatL {
-  0%, 100% { transform: translateY(0px)   rotate(-4deg); }
-  40%       { transform: translateY(-13px) rotate(-4deg); }
-  70%       { transform: translateY(-18px) rotate(-4deg); }
+@keyframes sectionDrinkFloatL {
+  0%, 100% { transform: rotate(-10deg) translateY(0);    }
+  50%       { transform: rotate(-10deg) translateY(-8px); }
 }
-@keyframes drinkFloatR {
-  0%, 100% { transform: translateY(5px)   rotate(4deg); }
-  35%       { transform: translateY(-10px) rotate(4deg); }
-  65%       { transform: translateY(-16px) rotate(4deg); }
-}
-
-@media (max-width: 960px) {
-  .drink-float-wrap { display: none; }
+@keyframes sectionDrinkFloatR {
+  0%, 100% { transform: rotate(10deg) translateY(0);    }
+  50%       { transform: rotate(10deg) translateY(-8px); }
 }
