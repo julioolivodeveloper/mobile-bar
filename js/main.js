@@ -55,7 +55,6 @@ window.addEventListener('scroll', () => {
 // ===== HAMBURGER =====
 const hamburger = document.getElementById('hamburger');
 const navLinks = document.getElementById('navLinks');
-const navbar = document.getElementById('navbar');
 hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('active');
   navLinks.classList.toggle('open');
