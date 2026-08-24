@@ -2,6 +2,112 @@
    LEMON & LIME BAR MOBILE — Main JS
    ============================= */
 
+// ===== DRINK DATA =====
+const DRINKS = {
+  mojito: {
+    name: 'Mojito', category: 'Rum Cocktail',
+    img: 'images/cocktails-close.jpg',
+    tagline: 'The Cuban classic — crisp, citrusy & refreshing',
+    desc: 'Born in Havana, loved everywhere. Our Mojito is made with fresh mint muddled to order, real lime juice, and a splash of chilled soda — never from a mix. The perfect cocktail for summer events and outdoor celebrations.',
+    ingredients: ['White Rum', 'Fresh Lime Juice', 'Fresh Mint Leaves', 'Cane Sugar Syrup', 'Club Soda', 'Ice'],
+    glass: 'Collins Glass'
+  },
+  vampiro: {
+    name: 'Vampiro', category: 'Tequila Cocktail',
+    img: 'images/menu/vampiros.jpg',
+    tagline: 'Bold, spicy & uniquely Mexican',
+    desc: 'A Mexican street-bar staple with attitude. Tequila meets a Sangrita blend of citrus, tomato, and spice — finished with a Tajín rim that adds the perfect kick. One sip and you\'ll understand the hype.',
+    ingredients: ['Tequila Blanco', 'Fresh Lime Juice', 'Tomato Juice', 'Orange Juice', 'Hot Sauce', 'Tajín Rim', 'Ice'],
+    glass: 'Highball Glass'
+  },
+  michelada: {
+    name: 'Michelada', category: 'Beer Cocktail',
+    img: 'images/menu/micheladas.jpg',
+    tagline: "Mexico's ultimate beer cocktail",
+    desc: 'The Michelada is Mexico\'s answer to the Bloody Mary. Ice-cold Mexican beer meets lime juice, hot sauce, Worcestershire, and Clamato — served in a glass rimmed with Tajín and salt. Bold, savory, and impossibly refreshing.',
+    ingredients: ['Mexican Beer (Modelo / Pacifico)', 'Fresh Lime Juice', 'Valentina Hot Sauce', 'Worcestershire Sauce', 'Clamato Juice', 'Maggi Seasoning', 'Tajín & Salt Rim', 'Ice'],
+    glass: 'Pint Glass'
+  },
+  margarita: {
+    name: 'Classic Margarita', category: 'Tequila Cocktail',
+    img: 'images/menu/margarita.jpg',
+    tagline: 'Timeless, balanced & always a hit',
+    desc: 'The drink that never goes out of style. Fresh lime juice, premium tequila blanco, and a touch of triple sec — shaken cold and served over ice with a classic salt rim. Simple ingredients, perfect execution every time.',
+    ingredients: ['Tequila Blanco', 'Triple Sec / Cointreau', 'Fresh Lime Juice', 'Agave Syrup', 'Salt Rim', 'Lime Wheel', 'Ice'],
+    glass: 'Margarita or Rocks Glass'
+  },
+  paloma: {
+    name: 'Paloma', category: 'Tequila Cocktail',
+    img: 'images/menu/palomas.png',
+    tagline: "Mexico's most popular cocktail",
+    desc: 'More popular than the Margarita in Mexico, the Paloma is light, bubbly, and dangerously easy to drink. Tequila with grapefruit soda and a squeeze of lime — refreshing from the first sip to the last.',
+    ingredients: ['Tequila Blanco', 'Grapefruit Soda (Jarritos / Squirt)', 'Fresh Lime Juice', 'Fresh Grapefruit Juice', 'Salt Rim', 'Grapefruit Wedge', 'Ice'],
+    glass: 'Highball Glass'
+  },
+  calimocho: {
+    name: 'Calimocho', category: 'Wine Cocktail',
+    img: 'images/menu/calimochos.jpg',
+    tagline: 'A Spanish-Mexican party classic',
+    desc: 'Equal parts red wine and Coca-Cola over ice. It sounds simple — and it is — but the combination is surprisingly smooth and bold. A Spanish classic adopted by Mexican parties everywhere. Easy to drink, easy to love.',
+    ingredients: ['Red Wine (Cabernet / Tempranillo)', 'Coca-Cola', 'Fresh Lemon or Lime Slice', 'Ice'],
+    glass: 'Highball or Wine Glass'
+  },
+  mezcal: {
+    name: 'Mezcales', category: 'Artisanal Spirit',
+    img: 'images/menu/mezcales.avif',
+    tagline: 'Smoky, complex & meant to be savored',
+    desc: 'We source authentic artisanal mezcal from Oaxacan producers. Served the traditional way — a small copita, an orange slice dusted with sal de gusano, and nothing else. This is mezcal as it was meant to be experienced.',
+    ingredients: ['Artisanal Oaxacan Mezcal', 'Orange Slice', 'Sal de Gusano (Worm Salt)', 'Served Neat or On the Rocks'],
+    glass: 'Copita or Rocks Glass'
+  },
+  lemonade: {
+    name: 'Kids Lemonade', category: 'Non-Alcoholic',
+    img: 'images/menu/lemonade.jpg',
+    tagline: '100% fresh — fun for every age',
+    desc: 'No powder, no artificial flavors — just real lemons squeezed fresh, pure cane sugar syrup, and ice-cold water. We add a sprig of mint and a lemon wheel to make it feel just as special as the grown-up drinks.',
+    ingredients: ['Fresh Squeezed Lemon Juice', 'Cane Sugar Syrup', 'Cold Water', 'Fresh Mint Sprig', 'Lemon Wheel', 'Ice'],
+    glass: 'Tall Glass'
+  }
+};
+
+// ===== DRINK MODAL =====
+(function() {
+  var modal = document.getElementById('drinkModal');
+  if (!modal) return;
+  var modalImg    = document.getElementById('modalImg');
+  var modalCat    = document.getElementById('modalCategory');
+  var modalName   = document.getElementById('modalName');
+  var modalTag    = document.getElementById('modalTagline');
+  var modalDesc   = document.getElementById('modalDesc');
+  var modalIng    = document.getElementById('modalIngredients');
+  var modalGlass  = document.getElementById('modalGlass');
+  var modalCta    = document.getElementById('modalCta');
+
+  function openModal(key) {
+    var d = DRINKS[key]; if (!d) return;
+    modalImg.src = d.img; modalImg.alt = d.name;
+    modalCat.textContent = d.category;
+    modalName.textContent = d.name;
+    modalTag.textContent = d.tagline;
+    modalDesc.textContent = d.desc;
+    modalGlass.textContent = d.glass;
+    modalIng.innerHTML = d.ingredients.map(function(i){ return '<span class="modal-chip">' + i + '</span>'; }).join('');
+    modalCta.href = 'https://wa.me/15742025420?text=Hi!%20I\'m%20interested%20in%20having%20' + encodeURIComponent(d.name) + '%20at%20my%20event!%20Can%20you%20tell%20me%20more%3F';
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  document.querySelectorAll('.menu-card[data-drink]').forEach(function(card) {
+    card.addEventListener('click', function() { openModal(card.dataset.drink); });
+  });
+  document.getElementById('drinkModalClose').addEventListener('click', closeModal);
+  document.getElementById('drinkModalOverlay').addEventListener('click', closeModal);
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+})();
+
 // ===== SCROLL REVEAL (sin CDN externo) =====
 (function() {
   const obs = new IntersectionObserver(function(entries) {

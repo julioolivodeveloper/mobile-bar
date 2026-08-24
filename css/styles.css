@@ -2300,76 +2300,240 @@ span.flatpickr-weekday {
 }
 
 /* ===== MENU BEBIDAS ===== */
+/* ===== MENU ===== */
+.menu-tap-hint {
+  text-align: center;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.04em;
+}
+.menu-tap-hint i { color: var(--gold); margin-right: 0.3rem; }
 .menu-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 1.25rem;
+  gap: 1.2rem;
 }
 .menu-card {
   background: var(--dark3);
-  border: 1px solid rgba(240,120,0,0.12);
-  border-radius: 16px;
-  padding: 0;
-  text-align: center;
-  transition: all var(--transition);
-  position: relative;
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 18px;
   overflow: hidden;
+  cursor: pointer;
   display: flex;
   flex-direction: column;
-}
-.menu-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(240,120,0,0.06) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity var(--transition);
-  z-index: 1;
-  pointer-events: none;
+  transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
 }
 .menu-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(240,120,0,0.4);
-  box-shadow: 0 16px 40px rgba(240,120,0,0.15);
+  border-color: rgba(240,120,0,0.5);
+  box-shadow: 0 20px 50px rgba(240,120,0,0.13);
 }
-.menu-card:hover::before { opacity: 1; }
 .menu-card-photo {
-  width: 100%;
-  height: 180px;
+  position: relative;
+  height: 210px;
   overflow: hidden;
-  border-radius: 16px 16px 0 0;
-  flex-shrink: 0;
 }
 .menu-card-photo img {
-  width: 100%;
-  height: 100%;
+  width: 100%; height: 100%;
   object-fit: cover;
-  transition: transform 0.6s ease;
   display: block;
+  transition: transform 0.55s ease;
 }
-.menu-card:hover .menu-card-photo img {
-  transform: scale(1.08);
+.menu-card:hover .menu-card-photo img { transform: scale(1.07); }
+.menu-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.52);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.menu-card:hover .menu-card-overlay { opacity: 1; }
+.menu-view-btn {
+  background: rgba(240,120,0,0.92);
+  color: #fff;
+  padding: 0.55rem 1.3rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
 }
 .menu-card-body {
-  padding: 1.1rem 1.1rem 1.25rem;
+  padding: 1rem 1.1rem 1.2rem;
   flex: 1;
 }
-.menu-card h3 {
+.menu-card-body h3 {
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: 1rem;
   font-weight: 700;
-  margin-bottom: 0.35rem;
   color: var(--white);
+  margin-bottom: 0.55rem;
 }
-.menu-card p {
-  font-size: 0.78rem;
-  color: var(--gray);
-  line-height: 1.5;
+.menu-card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+.menu-chip {
+  font-size: 0.67rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: rgba(240,120,0,0.9);
+  background: rgba(240,120,0,0.09);
+  border: 1px solid rgba(240,120,0,0.22);
+  padding: 0.17rem 0.55rem;
+  border-radius: 20px;
+}
+.menu-card.kids .menu-chip {
+  color: rgba(90,200,100,0.9);
+  background: rgba(90,200,100,0.09);
+  border-color: rgba(90,200,100,0.22);
+}
+.menu-card.kids:hover { border-color: rgba(90,200,100,0.45); }
+
+/* ===== DRINK MODAL ===== */
+.drink-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.drink-modal.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.drink-modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.88);
+  backdrop-filter: blur(6px);
+}
+.drink-modal-card {
+  position: relative;
+  z-index: 1;
+  background: #141414;
+  border-radius: 22px;
+  overflow: hidden;
+  max-width: 860px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  display: flex;
+  border: 1px solid rgba(240,120,0,0.25);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.8);
+  transform: translateY(30px) scale(0.97);
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1);
+}
+.drink-modal.open .drink-modal-card { transform: translateY(0) scale(1); }
+.drink-modal-close {
+  position: absolute;
+  top: 1rem; right: 1rem;
+  z-index: 10;
+  width: 36px; height: 36px;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 50%;
+  color: #fff;
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.drink-modal-close:hover { background: var(--gold); border-color: var(--gold); }
+.drink-modal-img {
+  width: 42%;
+  flex-shrink: 0;
+  min-height: 380px;
+}
+.drink-modal-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.drink-modal-info {
+  padding: 2.2rem 2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  overflow-y: auto;
+}
+.drink-modal-info .section-tag { align-self: flex-start; }
+.drink-modal-info h2 {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.1;
   margin: 0;
 }
-.menu-card.kids:hover { border-color: rgba(76,175,80,0.4); }
-.menu-card.kids .menu-card-photo { border-bottom: 2px solid rgba(76,175,80,0.3); }
+.modal-tagline {
+  color: var(--gold) !important;
+  font-size: 0.88rem !important;
+  font-style: italic;
+  margin: 0 !important;
+}
+.drink-modal-info p {
+  color: rgba(255,255,255,0.68);
+  font-size: 0.88rem;
+  line-height: 1.75;
+  margin: 0;
+}
+.modal-ing-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.55rem;
+}
+.modal-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.modal-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.88);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 0.28rem 0.8rem;
+  border-radius: 30px;
+}
+.modal-chip::before { content: '✦'; color: var(--gold); font-size: 0.48rem; }
+.modal-glass {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.38);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: -0.3rem;
+}
+.modal-glass i { color: var(--gold); }
 
+@media (max-width: 680px) {
+  .drink-modal-card { flex-direction: column; }
+  .drink-modal-img { width: 100%; min-height: 220px; }
+  .drink-modal-info { padding: 1.5rem 1.2rem; }
+  .drink-modal-info h2 { font-size: 1.5rem; }
+}
 @media (max-width: 1024px) { .menu-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 480px)  { .menu-grid { grid-template-columns: 1fr; } }
 
