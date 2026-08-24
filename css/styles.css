@@ -6,10 +6,12 @@
   --gold: #f07800;
   --gold-light: #ffaa33;
   --gold-dark: #cc5500;
-  --dark: #09132a;
-  --dark2: #0d1e38;
-  --dark3: #112248;
-  --gray: #8899bb;
+  --blue: #1a3f8c;
+  --blue-glow: rgba(26,63,140,0.35);
+  --dark: #0a0a0a;
+  --dark2: #111111;
+  --dark3: #1a1a1a;
+  --gray: #888;
   --light: #f5f5f5;
   --white: #ffffff;
   --font-display: 'Playfair Display', serif;
@@ -36,6 +38,67 @@ a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
+/* ===== ANIMATED BACKGROUND BLOBS ===== */
+.bg-animated {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.bg-blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0;
+  animation: blobFloat var(--dur, 14s) ease-in-out infinite alternate;
+}
+.bg-blob-1 {
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, #1a3f8c 0%, transparent 70%);
+  top: -250px; left: -200px;
+  --dur: 16s;
+  opacity: 0.18;
+}
+.bg-blob-2 {
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, #f07800 0%, transparent 70%);
+  bottom: -150px; right: -150px;
+  --dur: 11s;
+  opacity: 0.12;
+  animation-direction: alternate-reverse;
+}
+.bg-blob-3 {
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, #0d2880 0%, transparent 70%);
+  top: 40%; right: -250px;
+  --dur: 18s;
+  opacity: 0.15;
+}
+.bg-blob-4 {
+  width: 350px; height: 350px;
+  background: radial-gradient(circle, #cc5500 0%, transparent 70%);
+  top: 20%; left: 30%;
+  --dur: 13s;
+  opacity: 0.08;
+  animation-direction: alternate-reverse;
+}
+.bg-blob-5 {
+  width: 450px; height: 450px;
+  background: radial-gradient(circle, #102860 0%, transparent 70%);
+  bottom: 10%; left: -100px;
+  --dur: 20s;
+  opacity: 0.14;
+}
+
+@keyframes blobFloat {
+  0%   { transform: translate(0px,   0px)   scale(1);    }
+  25%  { transform: translate(40px,  -60px) scale(1.06); }
+  50%  { transform: translate(-30px, 40px)  scale(0.94); }
+  75%  { transform: translate(60px,  20px)  scale(1.04); }
+  100% { transform: translate(-20px, -40px) scale(1.08); }
+}
+
 /* ===== SCROLLBAR ===== */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: var(--dark); }
@@ -52,7 +115,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: background var(--transition), padding var(--transition), backdrop-filter var(--transition);
 }
 #navbar.scrolled {
-  background: rgba(9,19,42,0.95);
+  background: rgba(10,10,10,0.95);
   backdrop-filter: blur(20px);
   padding: 1rem 0;
   border-bottom: 1px solid rgba(240,120,0,0.2);
@@ -146,7 +209,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(9,19,42,0.88) 0%, rgba(9,19,42,0.55) 60%, rgba(240,120,0,0.18) 100%);
+  background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 60%, rgba(240,120,0,0.15) 100%);
 }
 .hero-particles {
   position: absolute;
@@ -451,7 +514,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .why-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(9,19,42,0.88);
+  background: rgba(0,0,0,0.88);
 }
 .why-grid {
   position: relative;
@@ -698,7 +761,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .reviews-bg { position: absolute; inset: 0; }
 .reviews-bg img { width: 100%; height: 100%; object-fit: cover; }
-.reviews-overlay { position: absolute; inset: 0; background: rgba(9,19,42,0.92); }
+.reviews-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.92); }
 .reviews-track {
   position: relative;
   display: grid;
@@ -794,7 +857,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   box-shadow: 0 20px 50px rgba(0,0,0,0.3);
 }
 .package-card.featured {
-  background: linear-gradient(135deg, #0d1e3a, #162248);
+  background: linear-gradient(135deg, #110a00, #1a1000);
   border-color: rgba(240,120,0,0.5);
   transform: scale(1.02);
 }
@@ -1452,7 +1515,7 @@ span.flatpickr-weekday {
   align-items: center;
   gap: 0.75rem;
   padding: 1rem 1.25rem;
-  background: linear-gradient(135deg, #0d1e38, rgba(240,120,0,0.12));
+  background: linear-gradient(135deg, #110a00, rgba(240,120,0,0.1));
   border-bottom: 1px solid rgba(240,120,0,0.18);
   border-radius: 20px 20px 0 0;
   cursor: default;
@@ -1608,7 +1671,7 @@ span.flatpickr-weekday {
 
 @media (max-width: 768px) {
   #navbar {
-    background: rgba(9,19,42,0.95);
+    background: rgba(10,10,10,0.95);
     backdrop-filter: blur(20px);
     padding: 0.85rem 0;
     border-bottom: 1px solid rgba(212,175,55,0.12);
