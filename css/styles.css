@@ -2564,10 +2564,29 @@ span.flatpickr-weekday {
 .modal-glass i { color: var(--gold); }
 
 @media (max-width: 680px) {
-  .drink-modal-card { flex-direction: column; }
-  .drink-modal-img { width: 100%; min-height: 220px; }
-  .drink-modal-info { padding: 1.5rem 1.2rem; }
-  .drink-modal-info h2 { font-size: 1.5rem; }
+  .drink-modal { align-items: flex-end; padding: 0; }
+  .drink-modal-card {
+    flex-direction: column;
+    border-radius: 22px 22px 0 0;
+    max-height: 92vh;
+    overflow: hidden;
+  }
+  .drink-modal-img {
+    width: 100%;
+    height: 210px;
+    min-height: unset;
+    flex-shrink: 0;
+  }
+  .drink-modal-img img { height: 210px; }
+  .drink-modal-info {
+    padding: 1.2rem 1.2rem 2rem;
+    overflow-y: auto;
+    flex: 1;
+    min-height: 0;
+  }
+  .drink-modal-info h2 { font-size: 1.35rem; }
+  .drink-modal-info p { font-size: 0.82rem; }
+  .drink-modal-close { top: 0.75rem; right: 0.75rem; }
 }
 @media (max-width: 1024px) { .menu-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (max-width: 480px)  { .menu-grid { grid-template-columns: 1fr; } }
