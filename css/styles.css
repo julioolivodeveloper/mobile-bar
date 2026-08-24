@@ -1,15 +1,15 @@
 /* =============================
-   NOMAD BAR — Global Styles
+   LEMON & LIME BAR MOBILE — Global Styles
    ============================= */
 
 :root {
-  --gold: #d4af37;
-  --gold-light: #f0d060;
-  --gold-dark: #a8880a;
-  --dark: #0a0a0a;
-  --dark2: #111111;
-  --dark3: #1a1a1a;
-  --gray: #888;
+  --gold: #f07800;
+  --gold-light: #ffaa33;
+  --gold-dark: #cc5500;
+  --dark: #09132a;
+  --dark2: #0d1e38;
+  --dark3: #112248;
+  --gray: #8899bb;
   --light: #f5f5f5;
   --white: #ffffff;
   --font-display: 'Playfair Display', serif;
@@ -52,10 +52,10 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   transition: background var(--transition), padding var(--transition), backdrop-filter var(--transition);
 }
 #navbar.scrolled {
-  background: rgba(10,10,10,0.95);
+  background: rgba(9,19,42,0.95);
   backdrop-filter: blur(20px);
   padding: 1rem 0;
-  border-bottom: 1px solid rgba(212,175,55,0.15);
+  border-bottom: 1px solid rgba(240,120,0,0.2);
 }
 .nav-container {
   max-width: 1280px;
@@ -146,7 +146,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 60%, rgba(212,175,55,0.15) 100%);
+  background: linear-gradient(135deg, rgba(9,19,42,0.88) 0%, rgba(9,19,42,0.55) 60%, rgba(240,120,0,0.18) 100%);
 }
 .hero-particles {
   position: absolute;
@@ -451,7 +451,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .why-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.88);
+  background: rgba(9,19,42,0.88);
 }
 .why-grid {
   position: relative;
@@ -698,7 +698,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 .reviews-bg { position: absolute; inset: 0; }
 .reviews-bg img { width: 100%; height: 100%; object-fit: cover; }
-.reviews-overlay { position: absolute; inset: 0; background: rgba(10,10,10,0.92); }
+.reviews-overlay { position: absolute; inset: 0; background: rgba(9,19,42,0.92); }
 .reviews-track {
   position: relative;
   display: grid;
@@ -794,8 +794,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   box-shadow: 0 20px 50px rgba(0,0,0,0.3);
 }
 .package-card.featured {
-  background: linear-gradient(135deg, #1a1500, #1a1a00);
-  border-color: rgba(212,175,55,0.5);
+  background: linear-gradient(135deg, #0d1e3a, #162248);
+  border-color: rgba(240,120,0,0.5);
   transform: scale(1.02);
 }
 .package-card.featured:hover { transform: scale(1.02) translateY(-6px); }
@@ -1452,8 +1452,8 @@ span.flatpickr-weekday {
   align-items: center;
   gap: 0.75rem;
   padding: 1rem 1.25rem;
-  background: linear-gradient(135deg, #1a1500, rgba(212,175,55,0.1));
-  border-bottom: 1px solid rgba(212,175,55,0.15);
+  background: linear-gradient(135deg, #0d1e38, rgba(240,120,0,0.12));
+  border-bottom: 1px solid rgba(240,120,0,0.18);
   border-radius: 20px 20px 0 0;
   cursor: default;
 }
@@ -1608,7 +1608,7 @@ span.flatpickr-weekday {
 
 @media (max-width: 768px) {
   #navbar {
-    background: rgba(10,10,10,0.94);
+    background: rgba(9,19,42,0.95);
     backdrop-filter: blur(20px);
     padding: 0.85rem 0;
     border-bottom: 1px solid rgba(212,175,55,0.12);
@@ -2097,6 +2097,85 @@ span.flatpickr-weekday {
   .bm-step-header h2 { font-size: 1.25rem; }
   .bm-guests-num { font-size: 2.25rem; }
 }
+
+/* ===== MENU BEBIDAS ===== */
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+.menu-card {
+  background: var(--dark3);
+  border: 1px solid rgba(240,120,0,0.12);
+  border-radius: 16px;
+  padding: 1.75rem 1.25rem;
+  text-align: center;
+  transition: all var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+.menu-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(240,120,0,0.06) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.menu-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(240,120,0,0.4);
+  box-shadow: 0 16px 40px rgba(240,120,0,0.12);
+}
+.menu-card:hover::before { opacity: 1; }
+.menu-card-icon {
+  width: 60px; height: 60px;
+  background: rgba(240,120,0,0.1);
+  border: 1.5px solid rgba(240,120,0,0.25);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: var(--gold);
+  margin: 0 auto 1rem;
+  transition: all var(--transition);
+}
+.menu-card:hover .menu-card-icon {
+  background: var(--gold);
+  color: var(--dark);
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 20px rgba(240,120,0,0.35);
+}
+.menu-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+  color: var(--white);
+}
+.menu-card p {
+  font-size: 0.8rem;
+  color: var(--gray);
+  line-height: 1.5;
+}
+.menu-card.kids .menu-card-icon {
+  background: rgba(100,200,100,0.1);
+  border-color: rgba(100,200,100,0.3);
+  color: #4caf50;
+}
+.menu-card.kids:hover .menu-card-icon {
+  background: #4caf50;
+  color: white;
+  box-shadow: 0 8px 20px rgba(76,175,80,0.35);
+}
+.menu-card.kids:hover { border-color: rgba(76,175,80,0.4); }
+
+@media (max-width: 1024px) { .menu-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px)  { .menu-grid { grid-template-columns: 1fr; } }
+
+/* Logo nav */
+.nav-logo-img { height: 36px; width: auto; display: block; }
 
 /* =============================
    SECTION DRINK DECORATIONS

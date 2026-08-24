@@ -1,5 +1,5 @@
 /* =============================
-   NOMAD BAR — Main JS
+   LEMON & LIME BAR MOBILE — Main JS
    ============================= */
 
 // ===== AOS INIT =====
@@ -232,35 +232,39 @@ let chatOpen = false;
 
 const responses = {
   pricing: {
-    text: '💰 <strong>Our packages:</strong><br><br>• <strong>Basic</strong> — from $299/event (2 bartenders, 4 cocktails, 80 guests)<br>• <strong>Premium</strong> — from $549/event (3 bartenders, 8 cocktails, 150 guests) ⭐<br>• <strong>Elite</strong> — from $899/event (5 bartenders, unlimited menu)<br><br>Contact us for a custom quote!',
-    followUp: ['services', 'contact', 'availability']
+    text: '💰 <strong>Our packages:</strong><br><br>• <strong>Basic</strong> — from $299/event (4 cocktails, up to 80 guests, 3–4 hrs)<br>• <strong>Premium</strong> — from $549/event (full 8-cocktail menu, 150 guests) ⭐<br>• <strong>Elite</strong> — from $899/event (Carlos & Ara both, unlimited menu)<br><br>Contact us for a custom quote!',
+    followUp: ['menu', 'contact', 'availability']
   },
-  services: {
-    text: '🍸 <strong>Our services include:</strong><br><br>• Weddings & Engagements<br>• Corporate Events<br>• Festivals & Parties<br>• Private Events (birthdays, quinceañeras, etc.)<br><br>Everything included: bar, ice, glasses, tools and cleanup.',
+  menu: {
+    text: '🍸 <strong>Our menu includes:</strong><br><br>🍃 Mojitos · 🧛 Vampiros · 🍺 Micheladas<br>🍋 Classic Margarita · 🌸 Palomas<br>🍷 Calimochos · 🔥 Mezcales<br>⭐ Kids Lemonade<br><br>All made fresh with quality ingredients!',
     followUp: ['pricing', 'bartenders', 'contact']
   },
+  services: {
+    text: '🍸 <strong>We serve all types of events:</strong><br><br>• Weddings & Engagements<br>• Quinceañeras & Birthdays<br>• Festivals & Parties<br>• Private Events & Graduations<br><br>Everything included: bar setup, ice, cups, tools and cleanup.',
+    followUp: ['menu', 'pricing', 'contact']
+  },
   availability: {
-    text: '📅 You can check availability using the <a href="#availability" style="color:var(--gold)">calendar on our website</a> or reach out directly.<br><br>Also available to book via <strong>WhatsApp</strong> at <a href="https://wa.me/15555550100" target="_blank" style="color:#25d366">+1 (555) 555-0100</a>.',
+    text: '📅 Check availability using the <a href="#availability" style="color:var(--gold)">calendar on our website</a> or contact us directly.<br><br>Book via <strong>WhatsApp</strong>: <a href="https://wa.me/15742025420" target="_blank" style="color:#25d366">(574) 202-5420</a> — we respond fast! 🚀',
     followUp: ['pricing', 'contact']
   },
   coverage: {
-    text: '📍 We cover <strong>Los Angeles and surrounding areas</strong>. For events outside our usual range, contact us to check availability and travel costs.',
+    text: '📍 We are based in <strong>Goshen, Indiana</strong> and serve the surrounding area including Elkhart, Mishawaka, South Bend and nearby cities.<br><br>For events further away, contact us and we\'ll let you know!',
     followUp: ['services', 'contact']
   },
   contact: {
-    text: '📞 <strong>Reach us at:</strong><br><br>• 📱 WhatsApp: <a href="https://wa.me/15555550100" target="_blank" style="color:#25d366">+1 (555) 555-0100</a><br>• 📧 Email: <a href="mailto:hello@nomadbar.com" style="color:var(--gold)">hello@nomadbar.com</a><br>• 📞 Phone: +1 (555) 555-0100<br><br>We respond in under 2 hours! 🚀',
+    text: '📞 <strong>Reach Carlos & Ara:</strong><br><br>• 📱 WhatsApp / Carlos: <a href="https://wa.me/15742025420" target="_blank" style="color:#25d366">(574) 202-5420</a><br>• 📱 Ara: <a href="tel:+15742381464" style="color:var(--gold)">(574) 238-1464</a><br>• 📍 Goshen, Indiana<br><br>We respond in under 2 hours! 🚀',
     followUp: ['pricing', 'availability']
   },
   bartenders: {
-    text: '👨‍🍳 Our bartenders are <strong>internationally certified</strong> with years of experience at luxury events.<br><br>We use <strong>top-shelf spirits</strong>, fresh fruits and artisan syrups to guarantee the best experience.',
-    followUp: ['services', 'pricing']
+    text: '👨‍🍳 <strong>Carlos & Ara</strong> are the heart of Lemon & Lime Bar Mobile!<br><br>They bring passion, professionalism and great energy to every event. Fresh ingredients, quality spirits and a smile guaranteed. 🍋',
+    followUp: ['menu', 'pricing', 'contact']
   }
 };
 
 const defaultResponses = [
-  'Can I help you with something else? I can tell you about our pricing, services, availability or how to contact us. 🍹',
-  'I didn\'t find a specific answer for that, but our team can help you directly. Prefer to chat on WhatsApp? 📱',
-  'For detailed questions, we recommend reaching out directly — we reply very fast. 😊'
+  'Can I help with something else? I can tell you about our menu, pricing, availability or how to reach Carlos & Ara. 🍹',
+  'I didn\'t catch that! Try asking about our cocktail menu, packages or location. You can also WhatsApp us at (574) 202-5420 📱',
+  'For detailed questions, reach out directly — Carlos & Ara respond super fast! 😊'
 ];
 
 function toggleChat() {
@@ -307,7 +311,7 @@ function botReply(key) {
       if (data.followUp) {
         const qBtns = document.createElement('div');
         qBtns.className = 'chatbot-quick-btns';
-        const labels = { pricing:'💰 Pricing', services:'🍸 Services', availability:'📅 Availability', coverage:'📍 Coverage', contact:'📞 Contact', bartenders:'👨‍🍳 Bartenders' };
+        const labels = { pricing:'💰 Pricing', menu:'🍸 Our Menu', services:'🎉 Services', availability:'📅 Availability', coverage:'📍 Location', contact:'📞 Contact', bartenders:'👨‍🍳 About Us' };
         data.followUp.forEach(k => {
           const b = document.createElement('button');
           b.className = 'quick-btn';
@@ -326,7 +330,7 @@ function botReply(key) {
 }
 
 function handleQuickBtn(key) {
-  const labels = { pricing:'💰 Pricing', services:'🍸 Services', availability:'📅 Availability', coverage:'📍 Coverage', contact:'📞 Contact', bartenders:'👨‍🍳 Bartenders' };
+  const labels = { pricing:'💰 Pricing', menu:'🍸 Our Menu', services:'🎉 Services', availability:'📅 Availability', coverage:'📍 Location', contact:'📞 Contact', bartenders:'👨‍🍳 About Us' };
   addMessage(labels[key], true);
   botReply(key);
 }
@@ -343,11 +347,12 @@ function handleUserMessage() {
   const lower = text.toLowerCase();
   let matched = null;
   if (lower.match(/price|cost|package|how much|charge|\$/)) matched = 'pricing';
+  else if (lower.match(/menu|mojito|vampiro|michelada|margarita|paloma|calimocho|mezcal|lemonade|cocktail|bebida|drink/)) matched = 'menu';
   else if (lower.match(/service|type|event|wedding|corporate|festival|party|birthday|quincea/)) matched = 'services';
   else if (lower.match(/availab|date|calendar|book|reserve|free|open/)) matched = 'availability';
-  else if (lower.match(/area|location|cover|where|city|los angeles|la\b/)) matched = 'coverage';
-  else if (lower.match(/contact|phone|email|whatsapp|call|message|reach/)) matched = 'contact';
-  else if (lower.match(/bartender|barman|staff|team|professional|certif/)) matched = 'bartenders';
+  else if (lower.match(/area|location|cover|where|city|goshen|indiana|elkhart|south bend/)) matched = 'coverage';
+  else if (lower.match(/contact|phone|call|whatsapp|message|reach|carlos|ara/)) matched = 'contact';
+  else if (lower.match(/bartender|barman|staff|team|professional|certif|who/)) matched = 'bartenders';
   botReply(matched);
 }
 
