@@ -407,6 +407,45 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   padding: 6rem 0;
 }
 .section-dark { background: var(--dark2); }
+.section-blue {
+  background: #071525;
+  position: relative;
+}
+.section-blue2 {
+  background: #0a1e38;
+  position: relative;
+}
+/* Cards inside blue sections get a slightly lighter blue tint */
+.section-blue .service-card,
+.section-blue .event-card,
+.section-blue .package-card,
+.section-blue .menu-card,
+.section-blue2 .service-card,
+.section-blue2 .event-card,
+.section-blue2 .package-card,
+.section-blue2 .menu-card {
+  background: #0e2444;
+  border-color: rgba(240,120,0,0.12);
+}
+.section-blue .contact-form,
+.section-blue2 .contact-form {
+  background: #0e2444;
+  border-color: rgba(240,120,0,0.1);
+}
+.section-blue .calendar-wrapper,
+.section-blue2 .calendar-wrapper {
+  background: linear-gradient(145deg, rgba(240,120,0,0.07) 0%, rgba(255,255,255,0.02) 100%);
+}
+.section-blue .avail-stat,
+.section-blue2 .avail-stat {
+  background: rgba(26,63,140,0.12);
+  border-color: rgba(26,63,140,0.2);
+}
+.section-blue .date-info-box,
+.section-blue2 .date-info-box {
+  background: linear-gradient(145deg, rgba(26,63,140,0.1), rgba(255,255,255,0.02));
+  border-color: rgba(26,63,140,0.25);
+}
 .container {
   max-width: 1280px;
   margin: 0 auto;
