@@ -626,63 +626,88 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .why-badge span { font-size: 0.9rem; font-weight: 700; }
 
 /* ===== GALLERY ===== */
-.gallery-tabs {
-  display: flex;
-  gap: 0.75rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-bottom: 2.5rem;
-}
-.gtab {
-  padding: 0.6rem 1.5rem;
-  border-radius: 50px;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  color: rgba(255,255,255,0.6);
-  border: 1px solid rgba(255,255,255,0.15);
-  transition: all var(--transition);
-}
-.gtab:hover, .gtab.active {
-  background: var(--gold);
-  color: var(--dark);
-  border-color: var(--gold);
-}
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 220px;
-  gap: 1rem;
-}
-.gallery-item {
+/* Gallery carousel */
+.gallery-carousel {
   position: relative;
+  padding: 0 3rem;
+}
+.gc-track-wrapper {
   overflow: hidden;
   border-radius: var(--radius);
+}
+.gc-track {
+  display: flex;
+  gap: 1rem;
+  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+.gc-slide {
+  flex: 0 0 calc(33.333% - 0.667rem);
+  height: 300px;
+  border-radius: var(--radius);
+  overflow: hidden;
   cursor: pointer;
 }
-.gallery-item.large { grid-column: span 2; }
-.gallery-item.tall { grid-row: span 2; }
-.gallery-item img {
+.gc-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.6s ease;
+  display: block;
 }
-.gallery-item:hover img { transform: scale(1.08); }
-.gallery-overlay {
+.gc-slide:hover img { transform: scale(1.06); }
+.gc-arrow {
   position: absolute;
-  inset: 0;
-  background: rgba(212,175,55,0.7);
+  top: 50%;
+  transform: translateY(-60%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: rgba(240,120,0,0.15);
+  border: 1.5px solid rgba(240,120,0,0.4);
+  color: var(--gold);
+  font-size: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity var(--transition);
-  color: var(--dark);
-  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all var(--transition);
+  z-index: 2;
 }
-.gallery-item:hover .gallery-overlay { opacity: 1; }
-.gallery-item.hide { display: none; }
+.gc-arrow:hover {
+  background: var(--gold);
+  color: var(--dark);
+  box-shadow: 0 4px 20px rgba(240,120,0,0.35);
+}
+.gc-prev { left: 0; }
+.gc-next { right: 0; }
+.gc-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+}
+.gc-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.gc-dot.active {
+  background: var(--gold);
+  width: 24px;
+  border-radius: 4px;
+}
+@media (max-width: 900px) {
+  .gc-slide { flex: 0 0 calc(50% - 0.5rem); }
+}
+@media (max-width: 560px) {
+  .gallery-carousel { padding: 0 2.5rem; }
+  .gc-slide { flex: 0 0 100%; height: 240px; }
+}
 
 /* Lightbox */
 .lightbox {
@@ -1705,9 +1730,6 @@ span.flatpickr-weekday {
   .why-text .section-title { text-align: center; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .reviews-track { grid-template-columns: 1fr 1fr; }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-  .gallery-item.large { grid-column: span 1; }
-  .gallery-item.tall { grid-row: span 1; }
   .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
   .availability-grid { grid-template-columns: 1fr; gap: 2rem; }
 }
@@ -1730,7 +1752,6 @@ span.flatpickr-weekday {
   .services-grid { grid-template-columns: 1fr; }
   .reviews-track { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
-  .gallery-grid { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
   .packages-grid { grid-template-columns: 1fr; }
   .package-card.featured { transform: scale(1); }
@@ -1741,7 +1762,6 @@ span.flatpickr-weekday {
 
 @media (max-width: 480px) {
   .hero-buttons { flex-direction: column; align-items: center; }
-  .gallery-grid { grid-template-columns: 1fr; }
   .chatbot-container { width: calc(100vw - 2rem); right: 1rem; bottom: 80px; }
   .fab-wa { bottom: 90px; right: 1rem; }
   .chatbot-bubble { right: 1rem; }

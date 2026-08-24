@@ -344,49 +344,23 @@
         <h2 class="section-title">Gallery of <span class="gold-text">moments</span></h2>
         <p class="section-sub">Every picture tells a story. Here are ours.</p>
       </div>
-      <div class="gallery-tabs" data-aos="fade-up">
-        <button class="gtab active" data-filter="all">All</button>
-        <button class="gtab" data-filter="bodas">Weddings</button>
-        <button class="gtab" data-filter="fiestas">Parties</button>
-        <button class="gtab" data-filter="cocktails">Cocktails</button>
-      </div>
-      <div class="gallery-grid" id="galleryGrid">
-        <div class="gallery-item large" data-cat="fiestas" data-aos="zoom-in" data-aos-delay="0">
-          <img src="images/carlos-bar.jpg" alt="Carlos at Lemon &amp; Lime bar" loading="lazy" />
-          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
+      <div class="gallery-carousel" data-aos="fade-up">
+        <button class="gc-arrow gc-prev" aria-label="Previous"><i class="fas fa-chevron-left"></i></button>
+        <div class="gc-track-wrapper">
+          <div class="gc-track" id="gcTrack">
+            <div class="gc-slide"><img src="images/carlos-bar.jpg" alt="Carlos at Lemon &amp; Lime bar" loading="lazy" /></div>
+            <div class="gc-slide"><img src="images/hero-toast.jpg" alt="Cheers with cocktails" loading="lazy" /></div>
+            <div class="gc-slide"><img src="images/hero-pour.jpg" alt="Cocktail being poured" loading="lazy" /></div>
+            <div class="gc-slide"><img src="images/svc-parties.jpg" alt="Party celebration" loading="lazy" /></div>
+            <div class="gc-slide"><img src="images/hero-cocktails.jpg" alt="Cocktail selection" loading="lazy" /></div>
+            <div class="gc-slide"><img src="images/hero-bartender.jpg" alt="Bartender at work" loading="lazy" /></div>
+            <div class="gc-slide"><img src="images/deco-cheers.jpg" alt="Wedding cheers" loading="lazy" /></div>
+            <div class="gc-slide"><img src="images/deco-tequila.jpg" alt="Tequila shots" loading="lazy" /></div>
+            <div class="gc-slide"><img src="images/hero-mezcal.jpg" alt="Craft cocktails" loading="lazy" /></div>
+          </div>
         </div>
-        <div class="gallery-item" data-cat="cocktails" data-aos="zoom-in" data-aos-delay="100">
-          <img src="images/hero-pour.jpg" alt="Cocktail being poured" loading="lazy" />
-          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-        </div>
-        <div class="gallery-item tall" data-cat="cocktails" data-aos="zoom-in" data-aos-delay="150">
-          <img src="images/hero-cocktails.jpg" alt="Cocktail selection" loading="lazy" />
-          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-        </div>
-        <div class="gallery-item" data-cat="bodas" data-aos="zoom-in" data-aos-delay="200">
-          <img src="images/deco-cheers.jpg" alt="Wedding cheers" loading="lazy" />
-          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-        </div>
-        <div class="gallery-item" data-cat="fiestas" data-aos="zoom-in" data-aos-delay="250">
-          <img src="images/hero-bartender.jpg" alt="Bartender at work" loading="lazy" />
-          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-        </div>
-        <div class="gallery-item" data-cat="cocktails" data-aos="zoom-in" data-aos-delay="300">
-          <img src="images/deco-tequila.jpg" alt="Tequila shots" loading="lazy" />
-          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-        </div>
-        <div class="gallery-item tall" data-cat="fiestas" data-aos="zoom-in" data-aos-delay="350">
-          <img src="images/hero-toast.jpg" alt="Cheers with cocktails" loading="lazy" />
-          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-        </div>
-        <div class="gallery-item" data-cat="cocktails" data-aos="zoom-in" data-aos-delay="400">
-          <img src="images/deco-shots.jpg" alt="Mezcal shots" loading="lazy" />
-          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-        </div>
-        <div class="gallery-item" data-cat="bodas" data-aos="zoom-in" data-aos-delay="450">
-          <img src="images/hero-mezcal.jpg" alt="Craft cocktails" loading="lazy" />
-          <div class="gallery-overlay"><i class="fas fa-expand"></i></div>
-        </div>
+        <button class="gc-arrow gc-next" aria-label="Next"><i class="fas fa-chevron-right"></i></button>
+        <div class="gc-dots" id="gcDots"></div>
       </div>
     </div>
   </section>
