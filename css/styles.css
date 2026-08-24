@@ -1400,6 +1400,41 @@ span.flatpickr-weekday {
 .form-msg.success { background: rgba(100,200,100,0.1); color: #4caf50; border: 1px solid rgba(100,200,100,0.3); display: block; }
 .form-msg.error { background: rgba(255,100,100,0.1); color: #ff6b6b; border: 1px solid rgba(255,100,100,0.3); display: block; }
 
+/* ===== AREAS GRID ===== */
+.areas-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+.area-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 1.5rem 1rem;
+  background: var(--dark3);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+.area-card:hover {
+  border-color: rgba(240,120,0,0.45);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(240,120,0,0.1);
+}
+.area-card i { font-size: 1.3rem; color: var(--gold); }
+.area-card strong { font-size: 0.92rem; color: var(--white); font-weight: 600; }
+.area-card span { font-size: 0.74rem; color: var(--gray); }
+.area-card-main { border-color: rgba(240,120,0,0.3); background: rgba(240,120,0,0.06); }
+.area-card-main strong, .area-card-main i { color: var(--gold); }
+.area-card-more { border-style: dashed; border-color: rgba(255,255,255,0.1); }
+.area-card-more i { color: rgba(255,255,255,0.3); }
+.area-card-more strong { color: rgba(255,255,255,0.4); }
+@media (max-width: 768px) { .areas-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .areas-grid { grid-template-columns: repeat(2, 1fr); } }
+
 /* ===== SERVICE AREA MAP ===== */
 .map-section {
   padding: 5rem 0 0;
