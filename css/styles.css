@@ -255,6 +255,15 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-bottom: 1.5rem;
   backdrop-filter: blur(10px);
 }
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.hero-anim-1 { animation: heroFadeUp 0.8s ease forwards 0.3s; opacity: 0; }
+.hero-anim-2 { animation: heroFadeUp 0.8s ease forwards 0.55s; opacity: 0; }
+.hero-anim-3 { animation: heroFadeUp 0.8s ease forwards 0.75s; opacity: 0; }
+.hero-anim-4 { animation: heroFadeUp 0.8s ease forwards 0.95s; opacity: 0; }
+
 .hero-title {
   font-family: var(--font-display);
   font-size: clamp(3rem, 8vw, 6.5rem);
