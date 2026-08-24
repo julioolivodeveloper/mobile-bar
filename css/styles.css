@@ -1780,6 +1780,15 @@ span.flatpickr-weekday {
   .availability-grid { grid-template-columns: 1fr; gap: 2rem; }
 }
 
+/* Hero slides — imágenes verticales para móvil */
+@media (max-width: 768px) {
+  .hero-slide:nth-child(1) { background-image: url('../images/hero-m1.jpg') !important; background-position: center center; }
+  .hero-slide:nth-child(2) { background-image: url('../images/hero-m2.jpg') !important; background-position: center center; }
+  .hero-slide:nth-child(3) { background-image: url('../images/hero-m3.jpg') !important; background-position: center center; }
+  .hero-slide:nth-child(4) { background-image: url('../images/hero-m4.jpg') !important; background-position: center top; }
+  .hero-slide:nth-child(5) { background-image: url('../images/hero-m5.jpg') !important; background-position: center center; }
+}
+
 @media (max-width: 768px) {
   #navbar {
     background: rgba(10,10,10,0.95);
