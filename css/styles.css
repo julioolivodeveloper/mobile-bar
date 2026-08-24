@@ -1431,6 +1431,16 @@ span.flatpickr-weekday {
   display: block;
 }
 
+/* ===== SCROLL REVEAL (reemplaza AOS) ===== */
+[data-aos] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+[data-aos="fade-right"] { transform: translateX(-28px); }
+[data-aos="fade-left"]  { transform: translateX(28px); }
+[data-aos].aos-animate  { opacity: 1 !important; transform: none !important; }
+
 /* ===== FOOTER ===== */
 .footer {
   background: #050505;

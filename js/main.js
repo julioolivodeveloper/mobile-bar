@@ -2,8 +2,19 @@
    LEMON & LIME BAR MOBILE — Main JS
    ============================= */
 
-// ===== AOS INIT =====
-AOS.init({ duration: 700, once: true, offset: 60 });
+// ===== SCROLL REVEAL (sin CDN externo) =====
+(function() {
+  const obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (!entry.isIntersecting) return;
+      var el = entry.target;
+      var delay = parseInt(el.getAttribute('data-aos-delay') || 0);
+      setTimeout(function() { el.classList.add('aos-animate'); }, delay);
+      obs.unobserve(el);
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('[data-aos]').forEach(function(el) { obs.observe(el); });
+})();
 
 // ===== HERO SLIDESHOW =====
 (function() {
