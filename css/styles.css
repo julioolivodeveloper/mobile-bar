@@ -491,7 +491,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   border: 1px solid rgba(212,175,55,0.1);
   transition: all var(--transition);
   position: relative;
+  text-decoration: none;
+  display: block;
+  color: inherit;
 }
+.svc-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.03em;
+  transition: gap var(--transition);
+}
+.service-card:hover .svc-link { gap: 0.7rem; }
 .service-card:hover {
   transform: translateY(-8px);
   border-color: rgba(212,175,55,0.4);
