@@ -1787,8 +1787,9 @@ span.flatpickr-weekday {
     padding: 0.85rem 0;
     border-bottom: 1px solid rgba(212,175,55,0.12);
   }
-  .nav-links { display: none; position: fixed; inset: 0; top: 62px; background: var(--dark); flex-direction: column; align-items: center; justify-content: center; gap: 2rem; z-index: 999; }
+  .nav-links { display: none; position: fixed; inset: 0; top: 62px; background: #0a0a0a; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; z-index: 999; }
   .nav-links.open { display: flex; }
+  #navbar.menu-open { background: #0a0a0a !important; backdrop-filter: none; }
   .nav-links a { font-size: 1.1rem; }
   .hamburger { display: flex; }
   .hero { padding-top: 70px; align-items: flex-start; justify-content: center; }
