@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Main pages -->
   <url>
     <loc>https://mobile-bar-nine.vercel.app/</loc>
     <lastmod>2025-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
+  <!-- Service pages -->
   <url>
     <loc>https://mobile-bar-nine.vercel.app/services/weddings.html</loc>
     <lastmod>2025-08-24</lastmod>
@@ -29,5 +31,73 @@
     <lastmod>2025-08-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <!-- Blog index -->
+  <url>
+    <loc>https://mobile-bar-nine.vercel.app/blog/</loc>
+    <lastmod>2025-08-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Blog posts -->
+  <url>
+    <loc>https://mobile-bar-nine.vercel.app/blog/wedding-cocktails-goshen.html</loc>
+    <lastmod>2025-08-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mobile-bar-nine.vercel.app/blog/mobile-bar-quinceanera.html</loc>
+    <lastmod>2025-08-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mobile-bar-nine.vercel.app/blog/michelada-vs-vampiro.html</loc>
+    <lastmod>2025-07-28</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mobile-bar-nine.vercel.app/blog/mobile-bar-backyard-party.html</loc>
+    <lastmod>2025-07-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mobile-bar-nine.vercel.app/blog/bar-service-large-events.html</loc>
+    <lastmod>2025-06-25</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mobile-bar-nine.vercel.app/blog/mojito-vs-margarita.html</loc>
+    <lastmod>2025-06-10</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mobile-bar-nine.vercel.app/blog/what-to-expect-mobile-bar.html</loc>
+    <lastmod>2025-05-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mobile-bar-nine.vercel.app/blog/summer-party-drinks-michiana.html</loc>
+    <lastmod>2025-05-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mobile-bar-nine.vercel.app/blog/kids-lemonade-bar.html</loc>
+    <lastmod>2025-04-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://mobile-bar-nine.vercel.app/blog/how-far-advance-book-mobile-bar.html</loc>
+    <lastmod>2025-04-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
