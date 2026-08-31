@@ -110,7 +110,7 @@
         <li><a href="#reviews">Reviews</a></li>
         <li><a href="#availability">Availability</a></li>
         <li><a href="blog/index.html">Blog</a></li>
-        <li><a href="#" class="nav-cta" id="openBookingNav">Book Now</a></li>
+        <li><a href="#" class="nav-cta open-contact-popup">Book Now</a></li>
       </ul>
       <button class="hamburger" id="hamburger" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -137,7 +137,7 @@
         Craft Cocktails · Professional Bartenders · Unforgettable Events
       </p>
       <div class="hero-buttons hero-anim-3">
-        <button class="btn btn-gold" id="openBooking">
+        <button class="btn btn-gold open-contact-popup">
           <i class="fas fa-calendar-check"></i> Book Now
         </button>
         <a href="https://wa.me/15742025420?text=Hi!%20I%20want%20to%20book%20Lemon%20%26%20Lime%20Bar%20Mobile%20for%20my%20event%20%F0%9F%8D%B9" target="_blank" class="btn btn-outline">
@@ -806,13 +806,10 @@
             <div class="avail-stat"><i class="fas fa-calendar-check"></i><span>Book up to <strong>12 months</strong> ahead</span></div>
           </div>
           <div class="avail-cta">
-            <p>Found your date? Reserve it before someone else does.</p>
-            <button class="btn btn-gold open-booking-btn">
-              <i class="fas fa-calendar-check"></i> Book Now
+            <p>Found your date? Contact us to reserve it before someone else does.</p>
+            <button class="btn btn-gold open-contact-popup">
+              <i class="fas fa-comments"></i> Contact Us
             </button>
-            <a href="https://wa.me/15742025420?text=Hi!%20I%20want%20to%20book%20a%20date%20for%20my%20event%20%F0%9F%8D%B9" target="_blank" class="btn btn-gold" style="background:rgba(37,211,102,0.15);border:1px solid rgba(37,211,102,0.4);color:#25d366;">
-              <i class="fab fa-whatsapp"></i> Book via WhatsApp
-            </a>
             <a href="tel:+15742025420" class="btn btn-outline">
               <i class="fas fa-phone"></i> Call Carlos
             </a>
@@ -829,7 +826,7 @@
         <img src="images/drinks/drink1.png" class="section-drink sd-right" alt="">
         <span class="section-tag">Let's Talk</span>
         <h2 class="section-title">Quote your <span class="gold-text">event</span></h2>
-        <p class="section-sub">Tell us about your event and we'll send a proposal within 24 hours.</p>
+        <p class="section-sub">Tell us about your event and we'll reply on WhatsApp right away.</p>
       </div>
       <div class="contact-grid">
         <div class="contact-info" data-aos="fade-right">
@@ -868,248 +865,37 @@
             <a href="https://wa.me/15742025420" class="social-btn wa" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
           </div>
         </div>
-        <form class="contact-form" id="contactForm" data-aos="fade-left" novalidate>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="nombre">Full Name *</label>
-              <input type="text" id="nombre" name="nombre" placeholder="Your name" required />
-            </div>
-            <div class="form-group">
-              <label for="telefono">Phone / WhatsApp *</label>
-              <input type="tel" id="telefono" name="telefono" placeholder="(574) 000-0000" required />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" name="email" placeholder="you@email.com" />
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="tipoEvento">Event Type *</label>
-              <select id="tipoEvento" name="tipoEvento" required>
-                <option value="">Select...</option>
-                <option>Wedding</option>
-                <option>Quinceañera</option>
-                <option>Birthday</option>
-                <option>Graduation</option>
-                <option>Corporate</option>
-                <option>Festival</option>
-                <option>Other</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="fecha">Event Date *</label>
-              <input type="text" id="fecha" name="fecha" placeholder="Select date" readonly required />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="personas">Number of Guests *</label>
-              <input type="number" id="personas" name="personas" placeholder="e.g. 100" min="1" required />
-            </div>
-            <div class="form-group">
-              <label for="horas">Hours of Service</label>
-              <select id="horas" name="horas">
-                <option value="">Select...</option>
-                <option>3 hours</option>
-                <option>4 hours</option>
-                <option>5 hours</option>
-                <option>6 hours</option>
-                <option>6+ hours</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="mensaje">Tell us more about your event</label>
-            <textarea id="mensaje" name="mensaje" rows="4" placeholder="Location, theme, special requests..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-gold btn-full">
-            <i class="fas fa-paper-plane"></i> Send Request
+        <div class="contact-cta-wrap" data-aos="fade-left">
+          <p class="contact-cta-text">Ready to get a quote? Reach out and we'll reply fast.</p>
+          <button class="btn btn-gold btn-full open-contact-popup">
+            <i class="fas fa-comments"></i> Contact Us
           </button>
-          <div id="formMsg" class="form-msg"></div>
-        </form>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ===== BOOKING MODAL ===== -->
-  <div class="booking-modal" id="bookingModal" aria-hidden="true">
-    <div class="bm-backdrop" id="bmBackdrop"></div>
-    <div class="bm-panel">
-
-      <button class="bm-close" id="bmClose" aria-label="Close"><i class="fas fa-times"></i></button>
-
-      <div class="bm-header">
-        <div class="bm-logo">LEMON &amp; <span>LIME</span></div>
-        <div class="bm-step-counter">Step <span id="bmCurrent">1</span> of <span id="bmTotal">6</span></div>
+  <!-- ===== CONTACT POPUP ===== -->
+  <div class="contact-popup-overlay" id="contactPopupOverlay" aria-hidden="true">
+    <div class="contact-popup">
+      <button class="contact-popup-close" id="contactPopupClose" aria-label="Close"><i class="fas fa-times"></i></button>
+      <div class="contact-popup-icon"><i class="fas fa-comments"></i></div>
+      <h2>Contact Us</h2>
+      <p>Choose how you'd like to reach us — we respond fast!</p>
+      <div class="contact-popup-btns">
+        <a href="https://wa.me/15742025420?text=Hi!%20I%27d%20like%20to%20book%20Lemon%20%26%20Lime%20Bar%20Mobile%20for%20my%20event%20%F0%9F%8D%B9" target="_blank" class="contact-popup-btn contact-popup-wa">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="sms:+15742025420&body=Hi!%20I%27d%20like%20to%20book%20Lemon%20%26%20Lime%20Bar%20Mobile%20for%20my%20event%20%F0%9F%8D%B9" class="contact-popup-btn contact-popup-sms">
+          <i class="fas fa-comment-sms"></i> Text / SMS
+        </a>
       </div>
-
-      <div class="bm-progress-wrap">
-        <div class="bm-progress-bar" id="bmProgressBar"></div>
-      </div>
-
-      <div class="bm-steps-wrap" id="bmStepsWrap">
-
-        <div class="bm-step active" data-step="1">
-          <div class="bm-step-header">
-            <div class="bm-step-emoji">🎉</div>
-            <h2>What type of event<br/>are you planning?</h2>
-            <p>Select the option that best describes your occasion.</p>
-          </div>
-          <div class="bm-options-grid" data-field="eventType">
-            <button class="bm-option" data-value="Wedding">
-              <span class="bm-opt-icon"><i class="fas fa-champagne-glasses"></i></span>
-              <span>Wedding</span>
-            </button>
-            <button class="bm-option" data-value="Quinceañera">
-              <span class="bm-opt-icon"><i class="fas fa-crown"></i></span>
-              <span>Quinceañera</span>
-            </button>
-            <button class="bm-option" data-value="Birthday">
-              <span class="bm-opt-icon"><i class="fas fa-cake-candles"></i></span>
-              <span>Birthday</span>
-            </button>
-            <button class="bm-option" data-value="Graduation">
-              <span class="bm-opt-icon"><i class="fas fa-graduation-cap"></i></span>
-              <span>Graduation</span>
-            </button>
-            <button class="bm-option" data-value="Corporate">
-              <span class="bm-opt-icon"><i class="fas fa-briefcase"></i></span>
-              <span>Corporate</span>
-            </button>
-            <button class="bm-option" data-value="Other">
-              <span class="bm-opt-icon"><i class="fas fa-wand-magic-sparkles"></i></span>
-              <span>Other</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="bm-step" data-step="2">
-          <div class="bm-step-header">
-            <div class="bm-step-emoji">📍</div>
-            <h2>Where will the event<br/>take place?</h2>
-            <p>Give us the venue name or general location.</p>
-          </div>
-          <div class="bm-input-group">
-            <label class="bm-label">Venue / Location</label>
-            <div class="bm-input-wrap">
-              <i class="fas fa-map-marker-alt"></i>
-              <input type="text" id="bm-location" class="bm-input" placeholder="e.g. Backyard, The Grand Hall, Park…" autocomplete="off" />
-            </div>
-            <label class="bm-label" style="margin-top:1.25rem">City</label>
-            <div class="bm-input-wrap">
-              <i class="fas fa-city"></i>
-              <input type="text" id="bm-city" class="bm-input" placeholder="e.g. Goshen, IN" autocomplete="off" />
-            </div>
-          </div>
-        </div>
-
-        <div class="bm-step" data-step="3">
-          <div class="bm-step-header">
-            <div class="bm-step-emoji">👥</div>
-            <h2>How many guests<br/>are expected?</h2>
-            <p>Approximate number helps us recommend the right package.</p>
-          </div>
-          <div class="bm-guests-wrap">
-            <div class="bm-guests-display">
-              <button class="bm-guests-btn" id="guestsMinus"><i class="fas fa-minus"></i></button>
-              <div class="bm-guests-num" id="guestsNum">50</div>
-              <button class="bm-guests-btn" id="guestsPlus"><i class="fas fa-plus"></i></button>
-            </div>
-            <input type="range" id="guestsRange" class="bm-range" min="10" max="500" step="5" value="50" />
-            <div class="bm-guests-scale">
-              <span>10</span><span>100</span><span>200</span><span>300</span><span>500+</span>
-            </div>
-            <div class="bm-pkg-suggest" id="pkgSuggest">
-              <i class="fas fa-cocktail"></i>
-              <span id="pkgText">We recommend the <strong>Basic</strong> package for this group size.</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="bm-step" data-step="4">
-          <div class="bm-step-header">
-            <div class="bm-step-emoji">📅</div>
-            <h2>Pick your event date</h2>
-            <p>Green dates are available. Red dates are already booked.</p>
-          </div>
-          <div class="bm-calendar-wrap">
-            <div id="bmDatepicker"></div>
-            <div class="bm-date-status" id="bmDateStatus">
-              <i class="far fa-calendar"></i> No date selected yet
-            </div>
-            <div class="bm-cal-legend">
-              <span><span class="bm-dot available"></span>Available</span>
-              <span><span class="bm-dot booked"></span>Booked</span>
-              <span><span class="bm-dot sel"></span>Your date</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="bm-step" data-step="5">
-          <div class="bm-step-header">
-            <div class="bm-step-emoji">📲</div>
-            <h2>How should we<br/>contact you?</h2>
-            <p>Choose your preferred way and we'll reach out fast.</p>
-          </div>
-          <div class="bm-options-grid bm-contact-grid" data-field="contactMethod">
-            <button class="bm-option bm-contact-opt bm-wa" data-value="WhatsApp" data-placeholder="Your WhatsApp number">
-              <span class="bm-opt-icon"><i class="fab fa-whatsapp"></i></span>
-              <span>WhatsApp</span>
-              <small>Fastest response</small>
-            </button>
-            <button class="bm-option bm-contact-opt bm-ph" data-value="Phone" data-placeholder="Your phone number">
-              <span class="bm-opt-icon"><i class="fas fa-phone"></i></span>
-              <span>Phone Call</span>
-              <small>We'll call you</small>
-            </button>
-            <button class="bm-option bm-contact-opt bm-em" data-value="Email" data-placeholder="Your email address">
-              <span class="bm-opt-icon"><i class="fas fa-envelope"></i></span>
-              <span>Email</span>
-              <small>Detailed proposal</small>
-            </button>
-          </div>
-          <div class="bm-contact-input-wrap" id="bmContactInputWrap">
-            <label class="bm-label" id="bmContactLabel">Your name</label>
-            <div class="bm-input-wrap">
-              <i class="fas fa-user" id="bmContactIcon"></i>
-              <input type="text" id="bm-name" class="bm-input" placeholder="Your full name" />
-            </div>
-            <label class="bm-label" id="bmContactInfoLabel" style="margin-top:1rem; display:none">Contact info</label>
-            <div class="bm-input-wrap" id="bmContactInfoWrap" style="display:none">
-              <i class="fas fa-address-card" id="bmContactInfoIcon"></i>
-              <input type="text" id="bm-contactinfo" class="bm-input" placeholder="" />
-            </div>
-          </div>
-        </div>
-
-        <div class="bm-step" data-step="6">
-          <div class="bm-step-header">
-            <div class="bm-step-emoji">🍹</div>
-            <h2>Your booking <span class="gold-text">summary</span></h2>
-            <p>Everything looks great — review and confirm.</p>
-          </div>
-          <div class="bm-summary" id="bmSummary">
-            <div class="bm-sum-row"><i class="fas fa-glass-cheers"></i><div><span>Event</span><strong id="sum-event">—</strong></div></div>
-            <div class="bm-sum-row"><i class="fas fa-map-marker-alt"></i><div><span>Location</span><strong id="sum-location">—</strong></div></div>
-            <div class="bm-sum-row"><i class="fas fa-users"></i><div><span>Guests</span><strong id="sum-guests">—</strong></div></div>
-            <div class="bm-sum-row"><i class="far fa-calendar-alt"></i><div><span>Date</span><strong id="sum-date">—</strong></div></div>
-            <div class="bm-sum-row"><i class="fas fa-comment-dots"></i><div><span>Contact via</span><strong id="sum-contact">—</strong></div></div>
-            <div class="bm-sum-row"><i class="fas fa-user"></i><div><span>Name</span><strong id="sum-name">—</strong></div></div>
-          </div>
-          <div id="bmFormResult" class="bm-form-result"></div>
-        </div>
-
-      </div>
-
-      <div class="bm-footer">
-        <button class="bm-btn-back" id="bmBack"><i class="fas fa-arrow-left"></i> Back</button>
-        <button class="bm-btn-next" id="bmNext">Continue <i class="fas fa-arrow-right"></i></button>
-        <button class="bm-btn-send" id="bmSend" style="display:none"><i class="fas fa-paper-plane"></i> Confirm Booking</button>
-      </div>
-
+      <p class="contact-popup-note"><i class="fas fa-clock"></i> We usually reply within 2 hours</p>
     </div>
   </div>
+
+  <div style="display:none" id="bookingModal"></div>
 
   <!-- ===== FOOTER ===== -->
   

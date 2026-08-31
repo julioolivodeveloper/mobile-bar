@@ -368,38 +368,33 @@ flatpickr("#datepicker", {
         <h3>Date available! 🎉</h3>
         <p><strong>${dateStr}</strong> is open. Contact us now to secure your spot before someone else does!</p>
       `;
+      const overlay = document.getElementById('contactPopupOverlay');
+      if (overlay) { overlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
     }
   }
 });
 
-flatpickr("#fecha", {
-  minDate: "today",
-  dateFormat: "Y-m-d",
-  disableMobile: false
-});
+// ===== CONTACT POPUP =====
+(function() {
+  const overlay = document.getElementById('contactPopupOverlay');
+  const closeBtn = document.getElementById('contactPopupClose');
 
-// ===== CONTACT FORM =====
-document.getElementById('contactForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const msg = document.getElementById('formMsg');
-  const btn = this.querySelector('button[type="submit"]');
-  const nombre = document.getElementById('nombre').value.trim();
-  const telefono = document.getElementById('telefono').value.trim();
-  if (!nombre || !telefono) {
-    msg.className = 'form-msg error';
-    msg.textContent = 'Please fill in all required fields (*)';
-    return;
+  function openPopup() {
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
   }
-  btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-  btn.disabled = true;
-  setTimeout(() => {
-    msg.className = 'form-msg success';
-    msg.innerHTML = '✅ Request sent! We\'ll get back to you within 24 hours.';
-    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Request';
-    btn.disabled = false;
-    this.reset();
-  }, 1800);
-});
+  function closePopup() {
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.open-contact-popup').forEach(el => {
+    el.addEventListener('click', function(e) { e.preventDefault(); openPopup(); });
+  });
+  closeBtn.addEventListener('click', closePopup);
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closePopup(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closePopup(); });
+})();
 
 // ===== CHATBOT =====
 const chatbotBubble = document.getElementById('chatbotBubble');
@@ -566,9 +561,8 @@ window.addEventListener('scroll', () => {
 
 // ===== BOOKING MODAL =====
 (function() {
-  const modal     = document.getElementById('bookingModal');
-  const backdrop  = document.getElementById('bmBackdrop');
-  const closeBtn  = document.getElementById('bmClose');
+  const modal = document.getElementById('bookingModal');
+  if (!modal || !modal.querySelector('.bm-step')) return;
   const btnNext   = document.getElementById('bmNext');
   const btnBack   = document.getElementById('bmBack');
   const btnSend   = document.getElementById('bmSend');
@@ -776,7 +770,6 @@ window.addEventListener('scroll', () => {
       const cfg = {
         WhatsApp: { placeholder: 'Your WhatsApp number', icon: 'fab fa-whatsapp', type: 'tel' },
         Phone:    { placeholder: 'Your phone number',    icon: 'fas fa-phone',    type: 'tel' },
-        Email:    { placeholder: 'Your email address',   icon: 'fas fa-envelope', type: 'email' },
       };
       const c = cfg[data.contactMethod];
       infoInput.placeholder = c.placeholder;
@@ -798,16 +791,18 @@ window.addEventListener('scroll', () => {
 
   // ---- SEND ----
   btnSend.addEventListener('click', () => {
-    const result = document.getElementById('bmFormResult');
-    btnSend.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-    btnSend.disabled = true;
-
-    setTimeout(() => {
-      result.className = 'bm-form-result success';
-      result.innerHTML = `✅ <strong>Booking request sent!</strong> We'll contact you via ${data.contactMethod} within 2 hours. Thanks, ${data.name}! 🍹`;
-      btnSend.style.display = 'none';
-      btnBack.style.display = 'none';
-    }, 1800);
+    const lines = [
+      'Hi! I\'d like to book the mobile bar 🍹',
+      '',
+      `👤 Name: ${data.name}`,
+      `🎉 Event: ${data.eventType}`,
+      `📍 Location: ${data.location}${data.city ? ', ' + data.city : ''}`,
+      `👥 Guests: ${data.guests}`,
+      `📅 Date: ${data.date || 'TBD'}`,
+      `📞 Contact: ${data.contactMethod}${data.contactInfo ? ' — ' + data.contactInfo : ''}`,
+    ];
+    const text = encodeURIComponent(lines.join('\n'));
+    window.open('https://wa.me/15742025420?text=' + text, '_blank');
   });
 
 })();

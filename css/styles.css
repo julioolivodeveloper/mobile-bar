@@ -1852,7 +1852,7 @@ span.flatpickr-weekday {
   }
   .nav-links { display: none; position: fixed; inset: 0; top: 62px; background: #0a0a0a; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; z-index: 999; }
   .nav-links.open { display: flex; }
-  #navbar.menu-open { background: #0a0a0a !important; backdrop-filter: none; }
+  #navbar.menu-open { background: #0a0a0a !important; backdrop-filter: none; transition: none; }
   .nav-links a { font-size: 1.1rem; }
   .hamburger { display: flex; }
   .hero { padding-top: 70px; align-items: flex-start; justify-content: center; }
@@ -2732,4 +2732,110 @@ span.flatpickr-weekday {
 @keyframes sectionDrinkFloatR {
   0%, 100% { transform: rotate(10deg) translateY(0);    }
   50%       { transform: rotate(10deg) translateY(-8px); }
+}
+
+/* ===== CONTACT POPUP ===== */
+.contact-popup-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.7);
+  backdrop-filter: blur(4px);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+.contact-popup-overlay.open {
+  display: flex;
+}
+.contact-popup {
+  background: var(--dark2, #151a20);
+  border: 1px solid rgba(212,175,55,0.25);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  max-width: 380px;
+  width: 90%;
+  text-align: center;
+  position: relative;
+  animation: popupIn 0.25s ease;
+}
+@keyframes popupIn {
+  from { opacity: 0; transform: scale(0.92) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.contact-popup-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  color: #aaa;
+  font-size: 1.1rem;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s;
+}
+.contact-popup-close:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.contact-popup-icon {
+  font-size: 2.5rem;
+  color: var(--gold, #D4AF37);
+  margin-bottom: 0.75rem;
+}
+.contact-popup h2 {
+  font-size: 1.6rem;
+  color: #fff;
+  margin: 0 0 0.5rem;
+}
+.contact-popup > p {
+  color: #bbb;
+  margin-bottom: 1.75rem;
+  font-size: 0.95rem;
+}
+.contact-popup-btns {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+.contact-popup-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 1rem 1.5rem;
+  border-radius: 12px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.15s, filter 0.15s;
+  letter-spacing: 0.03em;
+}
+.contact-popup-btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+.contact-popup-wa  { background: #25d366; color: #fff; }
+.contact-popup-sms { background: #3b82f6; color: #fff; }
+.contact-popup-note {
+  margin-top: 1.25rem;
+  font-size: 0.82rem;
+  color: #888;
+}
+.contact-popup-note i { color: var(--gold, #D4AF37); margin-right: 0.3rem; }
+
+/* contact section CTA wrap */
+.contact-cta-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+}
+.contact-cta-text {
+  font-size: 1.1rem;
+  color: #ccc;
+  max-width: 360px;
 }
