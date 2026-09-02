@@ -264,6 +264,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 .hero-anim-3 { animation: heroFadeUp 0.8s ease forwards 0.75s; opacity: 0; }
 .hero-anim-4 { animation: heroFadeUp 0.8s ease forwards 0.95s; opacity: 0; }
 
+.hero-location {
+  font-size: 0.85rem;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
 .hero-title {
   font-family: var(--font-display);
   font-size: clamp(3rem, 8vw, 6.5rem);
