@@ -272,6 +272,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   margin-bottom: 1.2rem;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 0.5rem;
 }
 .hero-title {
